@@ -15,10 +15,10 @@ public class SuperPlanet extends Planet {
     private static final int SUPER_PLANET_RADIUS = 70;
 
 
-    public SuperPlanet(float positionMaxX, float positionY) throws SlickException {
+    public SuperPlanet( float positionY, EntityManager manager) throws SlickException {
 
         super(new Image(planetTextures[ThreadLocalRandom.current().nextInt(planetTextures.length)]),
-                randomPosition(positionMaxX, positionY, SUPER_PLANET_RADIUS), SUPER_PLANET_RADIUS);   // constructor in Sprite
+                randomPosition(positionY, SUPER_PLANET_RADIUS), SUPER_PLANET_RADIUS, manager);   // constructor in Sprite
     }
 
 

@@ -23,8 +23,8 @@ public class EntityManager {
     }
 
     public void init() throws SlickException {
-        player = new Player(input);
-        planetManager = new PlanetManager(Main.DISPLAY_WIDTH);
+        player = new Player(input, this);
+        planetManager = new PlanetManager();
         planetManager.addToCollisionList(player);
 
     }
@@ -53,6 +53,19 @@ public class EntityManager {
         //for(Entity entity: entityList){
         //    entity.draw(g);
         //}
+    }
+
+    public void remove(Entity entity){
+        entityList.remove(entity);
+    }
+
+    public boolean isSpaceOccupied(Entity asker){
+        for (Entity entity : entityList){
+            if (entity.intersects(asker)){
+                return true;
+            }
+        }
+        return false;
     }
 
 }

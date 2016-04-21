@@ -14,9 +14,11 @@ abstract public class Entity extends Sprite implements Updatable{
     protected Vector2D speed;
     private Circle collisionObject; //Hitbox in circle shape
     protected boolean alive;
+    protected EntityManager manager;
 
-    public Entity(Image image, Vector2D position, float radius) throws SlickException {
+    public Entity(Image image, Vector2D position, float radius, EntityManager manager) throws SlickException {
         super(image, position);
+        this.manager = manager;
         speed = new Vector2D(0,0);
         collisionObject = new Circle(radius, position); //Hitbox for the spaceship
         alive = true; //Changes when colliding with something
@@ -55,5 +57,13 @@ abstract public class Entity extends Sprite implements Updatable{
     }
 
     protected void collisionResponse(Entity other){}
+
+    protected void selfDestruct(){
+        manager.remove(this);
+    }
+
+    protected boolean canSpawn(){
+        return !manager.isSpaceOccupied(this);
+    }
 
 }

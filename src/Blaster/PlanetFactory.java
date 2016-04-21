@@ -2,27 +2,34 @@ package Blaster;
 
 import org.newdawn.slick.SlickException;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 /**
- * Created by Samuel on 2016-04-18.
+ * Created by Gustaf on 2016-04-21.
  */
-public class PlanetFactory {
+public class PlanetFactory implements EntityFactory {
 
-    private static PlanetBuilder[] planetBuilders = {(x,y)->buildStandardPlanet(x,y), (x,y)->buildSuperPlanet(x, y)};
+    private static final float PLANET_START_Y = -200; //where the enemy spaceship will start in Y position
 
-    public static Planet buildSuperPlanet(float maxX, float positionY) throws SlickException{
-        return new SuperPlanet(maxX, positionY);
+
+    public PlanetFactory(){
+
     }
 
-    public static Planet buildStandardPlanet(float maxX, float positionY) throws SlickException{
-        return new StandardPlanet(maxX, positionY);
+
+    @Override
+    public boolean wantsToProduce() {
+        return false;
     }
 
-    public static Planet buildPlanet(float maxX, float positionY) throws SlickException{ //return one of the planets
+    @Override
+    public Entity produce(EntityManager manager) throws SlickException {
 
-        Planet planet;
-        planet = planetBuilders[ThreadLocalRandom.current().nextInt(planetBuilders.length)].buildPlanet(maxX, positionY);
-        return planet;
+        return PlanetTemporaryBuilder.buildPlanet(PLANET_START_Y, manager);
     }
+
+    @Override
+    public void update(float deltaTime) {
+
+    }
+
+
 }

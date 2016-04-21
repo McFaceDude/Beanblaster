@@ -21,8 +21,8 @@ public class Player extends Entity /*implements KeyListener */{
     private Input input;
     private Vector2D speed;
 
-    public Player(Input input) throws SlickException {
-        super(new Image(PLAYER_TEXTURE), STARTING_POSITION, PLAYER_RADIUS);
+    public Player(Input input, EntityManager manager) throws SlickException {
+        super(new Image(PLAYER_TEXTURE), STARTING_POSITION, PLAYER_RADIUS, manager);
         this.input = input;
         speed = Vector2D.zero();
     }

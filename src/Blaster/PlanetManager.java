@@ -1,11 +1,9 @@
 package Blaster;
 
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,17 +21,18 @@ public class PlanetManager {
     private static final int PLANET_SPAWN_DELAY_MAX = 9;
 
     private int displayWidth;
+    private EntityManager manager;
 
-    public PlanetManager(int displayWidth) {
-        this.displayWidth = displayWidth;
+    public PlanetManager(EntityManager manager) {
+
     }
 
     public void createPlanet() throws SlickException { //for the planets
 
-        Planet planet = PlanetFactory.buildPlanet(displayWidth, PLANET_START_Y);
+        Planet planet = PlanetTemporaryBuilder.buildPlanet( PLANET_START_Y, manager);
 
         while (!canSpawn(planet)) {
-            planet.randomisePositionX(displayWidth);
+            planet.randomisePositionX();
         }
         planetList.add(planet); //adds new enemy to the planet list
     }
