@@ -14,11 +14,9 @@ import java.util.ArrayList;
 public class EntityManager {
 
     private ArrayList<Entity> entityList = new ArrayList<Entity>();
-
     private ArrayList<EntityFactory> factoryList = new ArrayList<>();
-    Player player;
     private Input input;
-
+    Player player;
 
     public EntityManager(Input input){
        this.input = input;
@@ -44,7 +42,9 @@ public class EntityManager {
             entity.update(deltaTime);
         }
 
-        for (int i = 0; i < tempList.size() - 2; i++){
+        for (int i = 0; i < tempList.size() - 2; i++){  //Checks if any entity in the list collides with any other
+                                                        //entity in the list. Does not have to check the last
+                                                        //element because it has already been checks by the other.
             for (int j = i + 1; j < tempList.size() - 1; j++) {
                 entityList.get(i).collide(entityList.get(j));
             }
