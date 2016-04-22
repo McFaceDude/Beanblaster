@@ -1,9 +1,10 @@
-package Blaster;
+package blaster.entity;
 
+import blaster.EntityManager;
+import blaster.Main;
+import blaster.Vector2D;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
-
-import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Created by Samuel on 2016-04-17.
@@ -22,10 +23,14 @@ public abstract class Planet extends Entity {
 
     public void update(float deltaTime) {
         super.move(speed);
+        if (passedScreen()){
+            manager.remove(this);
+        }
+
     }
 
-    public boolean passedScreen(Entity entity){
-        if (position.getY() >= Main.getDisplayWidth()){
+    public boolean passedScreen(){
+        if (position.getY() >= Main.getDisplayHeight() + getRadius()){
             return true;
         }
         return false;

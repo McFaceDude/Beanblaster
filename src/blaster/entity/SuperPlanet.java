@@ -1,5 +1,6 @@
-package Blaster;
+package blaster.entity;
 
+import blaster.EntityManager;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 

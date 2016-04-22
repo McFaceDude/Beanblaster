@@ -1,4 +1,4 @@
-package Blaster;
+package blaster;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;

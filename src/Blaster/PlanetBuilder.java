@@ -1,5 +1,6 @@
-package Blaster;
+package blaster;
 
+import blaster.entity.Planet;
 import org.newdawn.slick.SlickException;
 
 /**

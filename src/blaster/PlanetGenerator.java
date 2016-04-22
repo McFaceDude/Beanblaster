@@ -1,5 +1,6 @@
-package Blaster;
+package blaster;
 
+import blaster.entity.*;
 import org.newdawn.slick.SlickException;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -7,12 +8,12 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * Created by Samuel on 2016-04-18.
  */
-public class PlanetTemporaryBuilder {
+public class PlanetGenerator {
 
     private static PlanetBuilder[] planetBuilders = {(y, manager)->buildStandardPlanet(y, manager), (y,manager)->buildSuperPlanet(y, manager)};
 
     public static Planet buildSuperPlanet( float positionY, EntityManager manager) throws SlickException{
-        return new SuperPlanet (positionY, manager);
+        return new SuperPlanet(positionY, manager);
     }
 
     public static Planet buildStandardPlanet( float positionY, EntityManager manager) throws SlickException{

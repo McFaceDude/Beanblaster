@@ -1,7 +1,7 @@
-package Blaster;
+package blaster.entity;
 
+import blaster.*;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
 /**
@@ -9,7 +9,7 @@ import org.newdawn.slick.SlickException;
  * User: Samuel
  * Date: 2013-10-06
  */
-abstract public class Entity extends Sprite implements Updatable{
+abstract public class Entity extends Sprite implements Updatable {
 
     protected Vector2D speed;
     private Circle collisionObject; //Hitbox in circle shape

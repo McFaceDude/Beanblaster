@@ -1,4 +1,4 @@
-package Blaster;
+package blaster;
 
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -12,7 +12,7 @@ import org.newdawn.slick.SlickException;
 abstract public class Sprite implements Drawable{ //for the moving and drawing of objects on the screen
 
     Image image;
-    Vector2D position;
+    protected Vector2D position;
     boolean visible;
 
     public Sprite(Image image, Vector2D position) throws SlickException {

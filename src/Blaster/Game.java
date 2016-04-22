@@ -1,4 +1,4 @@
-package Blaster;
+package blaster;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -24,7 +24,10 @@ public class Game extends BasicGameState {   //The state where you play the game
     }
 
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
+        EntityFactory planetFactory = new PlanetFactory();
+
         entityManager.init();
+        entityManager.addEntityFactory(planetFactory);
     }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) {

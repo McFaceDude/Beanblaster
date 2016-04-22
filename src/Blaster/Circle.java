@@ -1,7 +1,5 @@
-package Blaster;
+package blaster;
 
-import org.newdawn.slick.geom.Shape;
-import org.newdawn.slick.geom.Transform;
 
 /**
  * Created by Samuel on 2015-07-21.

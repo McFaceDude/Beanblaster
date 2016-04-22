@@ -1,5 +1,6 @@
-package Blaster;
+package blaster;
 
+import blaster.entity.Entity;
 import org.newdawn.slick.SlickException;
 
 /**
@@ -7,7 +8,7 @@ import org.newdawn.slick.SlickException;
  */
 public abstract interface EntityFactory extends Updatable{
 
-    public abstract boolean wantsToProduce();
+    public abstract boolean wantsToProduce(float deltaTime);
 
     public abstract Entity produce(EntityManager manager) throws SlickException;
 

@@ -1,4 +1,4 @@
-package Blaster;
+package blaster;
 
 /**
  * Created by Samuel on 2016-04-20.

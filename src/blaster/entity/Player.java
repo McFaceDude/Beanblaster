@@ -1,5 +1,8 @@
-package Blaster;
+package blaster.entity;
 
+import blaster.EntityManager;
+import blaster.Main;
+import blaster.Vector2D;
 import org.newdawn.slick.*;
 
 /**

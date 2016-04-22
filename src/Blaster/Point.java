@@ -1,4 +1,4 @@
-package Blaster;
+package blaster;
 
 /**
  * Created with IntelliJ IDEA.

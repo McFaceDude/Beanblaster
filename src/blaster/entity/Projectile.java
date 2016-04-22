@@ -1,7 +1,9 @@
-package Blaster;
+package blaster.entity;
 
+import blaster.EntityManager;
+import blaster.Main;
+import blaster.Vector2D;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
 /**
@@ -16,10 +18,10 @@ public class Projectile extends Entity{
 
     private Vector2D velocity;
 
-    public Projectile(Vector2D position, Vector2D direction) throws SlickException {
-        super(new Image(PROJECTILE_TEXTURE), position, PROJECTILE_RADIUS);
+    public Projectile(Vector2D position, Vector2D direction, EntityManager manager) throws SlickException {
+        super(new Image(PROJECTILE_TEXTURE), position, PROJECTILE_RADIUS, manager);
 
-        this.velocity = new Vector2D(direction.x * PROJECTILE_SPEED, direction.y * PROJECTILE_SPEED);
+        this.velocity = new Vector2D(direction.getX() * PROJECTILE_SPEED, direction.getY() * PROJECTILE_SPEED);
     }
 
     public void update(float deltaTime) {

@@ -1,10 +1,9 @@
-package Blaster;
+package blaster.entity;
 
+import blaster.EntityManager;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-import java.util.ArrayList;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
