@@ -20,17 +20,16 @@ public class EntityManager {
     private Input input;
 
 
-    public EntityManager(int displayWidth, int displayHeight, Input input){
+    public EntityManager(Input input){
        this.input = input;
     }
 
     public void init() throws SlickException {
         player = new Player(input, this);
+        entityList.add(player);
     }
 
     public void update(float deltaTime) throws SlickException {
-
-        player.update(deltaTime);
 
         for (EntityFactory entityFactory : factoryList){
             if (entityFactory.wantsToProduce(deltaTime)){
@@ -38,16 +37,21 @@ public class EntityManager {
             }
         }
 
-        ArrayList<Entity> tempList = new ArrayList<>(entityList);
+        ArrayList<Entity> tempList = new ArrayList<>(entityList); //Because a entity can remove itself from
+        // the entityList when the for loop is running, we need to iterate through a copy of that list
 
-        for (Entity entity : tempList){
+        for (Entity entity: tempList){
             entity.update(deltaTime);
+        }
+
+        for (int i = 0; i < tempList.size() - 2; i++){
+            for (int j = i + 1; j < tempList.size() - 1; j++) {
+                entityList.get(i).collide(entityList.get(j));
+            }
         }
     }
 
     public void draw(Graphics g){
-
-        player.draw(g);
 
         for (Entity entity : entityList){
             entity.draw(g);

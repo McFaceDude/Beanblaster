@@ -20,7 +20,7 @@ public class Game extends BasicGameState {   //The state where you play the game
 
     public Game (int state) {
         input = new Input(Main.DISPLAY_HEIGHT);
-        entityManager = new EntityManager(Main.DISPLAY_WIDTH, Main.DISPLAY_HEIGHT, input);
+        entityManager = new EntityManager(input);
     }
 
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
