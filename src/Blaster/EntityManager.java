@@ -2,6 +2,10 @@ package blaster;
 
 import blaster.entity.Entity;
 import blaster.entity.Player;
+import blaster.entity.Projectile;
+import blaster.factory.EntityFactory;
+import blaster.factory.PlanetFactory;
+import blaster.factory.ProjectileFactory;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
@@ -25,16 +29,19 @@ public class EntityManager {
     public void init() throws SlickException {
         player = new Player(input, this);
         entityList.add(player);
+
     }
 
     public void update(float deltaTime) throws SlickException {
 
         for (EntityFactory entityFactory : factoryList){
-            if (entityFactory.wantsToProduce(deltaTime)){
+            //System.out.println(factoryList);
+            if (entityFactory.wantsToProduce(deltaTime, input)){
                 entityList.add(entityFactory.produce(this));
             }
         }
-
+        //System.out.println(entityList);
+        //System.out.println("");
         ArrayList<Entity> tempList = new ArrayList<>(entityList); //Because a entity can remove itself from
         // the entityList when the for loop is running, we need to iterate through a copy of that list
 
@@ -45,8 +52,14 @@ public class EntityManager {
         for (int i = 0; i < tempList.size() - 2; i++){  //Checks if any entity in the list collides with any other
                                                         //entity in the list. Does not have to check the last
                                                         //element because it has already been checks by the other.
-            for (int j = i + 1; j < tempList.size() - 1; j++) {
-                entityList.get(i).collide(entityList.get(j));
+            for (int j = i + 1; j < tempList.size() - 2; j++) {
+                if (!(tempList.get(i) instanceof Player) && !(tempList.get(j) instanceof Projectile)) {
+
+                    if (!(tempList.get(i) instanceof Projectile) && !(tempList.get(j) instanceof Player)) {
+                        entityList.get(i).collide(entityList.get(j));
+                    }
+                    entityList.get(i).collide(entityList.get(j));
+                }
             }
         }
     }
@@ -73,5 +86,8 @@ public class EntityManager {
             }
         }
         return false;
+    }
+    public Player getPlayer(){
+        return player;
     }
 }

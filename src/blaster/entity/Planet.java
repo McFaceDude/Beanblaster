@@ -43,5 +43,6 @@ public abstract class Planet extends Entity {
     protected static Vector2D randomPosition( float y, float radius){
         return new Vector2D(((float)Math.random()*(Main.getDisplayWidth() - radius*2) + radius), y);
     }
+    
 
 }

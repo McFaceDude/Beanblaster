@@ -1,6 +1,9 @@
-package blaster;
+package blaster.factory;
 
+import blaster.EntityManager;
+import blaster.PlanetGenerator;
 import blaster.entity.Entity;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
 /**
@@ -10,8 +13,8 @@ public class PlanetFactory implements EntityFactory {
 
     private static final float PLANET_START_Y = -200; //where the enemy spaceship will start in Y position
     private double time;
-    private static final int PLANET_SPAWN_DELAY_MIN = 6; //in seconds
-    private static final int PLANET_SPAWN_DELAY_MAX = 9;
+    private static final int PLANET_SPAWN_DELAY_MIN = 3; //in seconds
+    private static final int PLANET_SPAWN_DELAY_MAX = 8;
 
     public PlanetFactory(){
 
@@ -19,7 +22,7 @@ public class PlanetFactory implements EntityFactory {
 
 
     @Override
-    public boolean wantsToProduce(float deltaTime) {
+    public boolean wantsToProduce(float deltaTime, Input input) {
         time -= deltaTime;
 
         if (time <= 0){

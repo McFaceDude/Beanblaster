@@ -3,6 +3,7 @@ package blaster.entity;
 import blaster.EntityManager;
 import blaster.Main;
 import blaster.Vector2D;
+import blaster.factory.ProjectileFactory;
 import org.newdawn.slick.*;
 
 /**
@@ -18,8 +19,8 @@ public class Player extends Entity /*implements KeyListener */{
 
     private static final Vector2D STARTING_POSITION = new Vector2D(500, 400); //where the player spaceship will start
     private static final float PLAYER_RADIUS = 50; //Radius of player
-    private float mouseX;
-    private float mouseY;
+    //private float mouseX;
+    //private float mouseY;
     private static String PLAYER_TEXTURE = "res/Player-Bean-Small.png" ;
     private Input input;
     private Vector2D speed;
@@ -28,21 +29,21 @@ public class Player extends Entity /*implements KeyListener */{
         super(new Image(PLAYER_TEXTURE), STARTING_POSITION, PLAYER_RADIUS, manager);
         this.input = input;
         speed = Vector2D.zero();
+
     }
 
     @Override
     public void update(float deltaTime) {
         Vector2D direction = Vector2D.zero();
 
-        mouseX = input.getMouseX();
-        mouseY = input.getMouseY();
+        //mouseX = input.getMouseX();
+        //mouseY = input.getMouseY();
 
-        if(input.isKeyDown (Input.KEY_UP)){ direction.setY(-1); }
+        if(input.isKeyDown(Input.KEY_UP)){ direction.setY(-1); }
         if(input.isKeyDown(Input.KEY_DOWN)){direction.setY(1); }
         if(input.isKeyDown(Input.KEY_LEFT)){direction.setX(-1);}
         if(input.isKeyDown(Input.KEY_RIGHT)){direction.setX(1);}
-        //if(input.isButton1Pressed(Input.MOUSE_LEFT_BUTTON)){
-        //}
+
         if(direction.equals( Vector2D.zero())){
             speed.lerp(Vector2D.zero(), FRICTION*deltaTime);
         }

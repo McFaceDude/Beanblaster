@@ -1,5 +1,8 @@
 package blaster;
 
+import blaster.factory.EntityFactory;
+import blaster.factory.PlanetFactory;
+import blaster.factory.ProjectileFactory;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -25,9 +28,12 @@ public class Game extends BasicGameState {   //The state where you play the game
 
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         EntityFactory planetFactory = new PlanetFactory();
+        EntityFactory projectileFactory = new ProjectileFactory();
+
 
         entityManager.init();
         entityManager.addEntityFactory(planetFactory);
+        entityManager.addEntityFactory(projectileFactory);
     }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) {
