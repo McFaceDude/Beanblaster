@@ -14,23 +14,26 @@ public class ProjectileFactory implements EntityFactory {
 
 
     Input input;
+    boolean wasDown;
 
     public ProjectileFactory() {
+
+        wasDown = false;
 
     }
 
     @Override
     public boolean wantsToProduce(float deltaTime, Input input) {
         this.input = input;
+
         //System.out.println("player position: " +  +"mouseX: "+ input.getMouseX() + "mouseY: "+ input.getMouseY());
-        if(input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON)){
-          //  System.out.println("BUTTON PRESSED!");
+        //mousePressed(input);
 
-            return true;
-        }
-        //System.out.println("......");
-        return false;
+        boolean isDown = input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON);
+        boolean isPressed = isDown && !wasDown;
+        wasDown = isDown;
 
+        return isPressed;
     }
 
     @Override
@@ -41,6 +44,7 @@ public class ProjectileFactory implements EntityFactory {
             //    " mouseX: "+ input.getMouseX() + " mouseY: "+ input.getMouseY());
 
 
+
         return new Projectile(new Vector2D(manager.getPlayer().getPosition()), new Vector2D(input.getMouseX(), input.getMouseY()), manager);
 
     }
@@ -48,6 +52,12 @@ public class ProjectileFactory implements EntityFactory {
     @Override
     public void update(float deltaTime) {
 
+    }
+
+    public boolean mousePressed(Input input){
+
+
+        return input.isMousePressed(Input.MOUSE_LEFT_BUTTON) && !wasDown;
     }
 
 

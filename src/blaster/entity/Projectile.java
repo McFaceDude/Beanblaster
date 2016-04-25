@@ -12,7 +12,7 @@ import org.newdawn.slick.SlickException;
 public class Projectile extends Entity{
 
     private static final float PROJECTILE_RADIUS = 15;
-    private static final float PROJECTILE_SPEED = 1.0f;
+    private static final float PROJECTILE_SPEED = 4.0f;
     private static String PROJECTILE_TEXTURE = "res/Player-Bean-Very-Small.png";
     //private  Vector2D STARTING_POSITION = new Vector2D(500, 400);
 
@@ -21,36 +21,48 @@ public class Projectile extends Entity{
     public Projectile(Vector2D position, Vector2D target, EntityManager manager) throws SlickException {
 
         super(new Image(PROJECTILE_TEXTURE), position, PROJECTILE_RADIUS, manager);
-        System.out.println("Projectile constructor");
-        Vector2D tempVector = new Vector2D((target.getX() - manager.getPlayer().getPosition().getY()), target.getY() - manager.getPlayer().getPosition().getY()).normalize();
-        this.velocity = new Vector2D(tempVector.getX() * PROJECTILE_SPEED, tempVector.getY() * PROJECTILE_SPEED);
-        System.out.println(velocity.getX()+" "+ velocity.getY());
-        System.out.println(position.getX()+ " "+ position.getY());
+        //System.out.println(target.getX()+" y: "+ target.getY());
+
+        Vector2D direction = new Vector2D(target).sub(position).normalize();
+        System.out.println(direction);
+
+
+        this.velocity = new Vector2D(direction.getX() * PROJECTILE_SPEED, direction.getY() * PROJECTILE_SPEED);
+
+        //System.out.println(velocity.getX()+" "+ velocity.getY());
+        //System.out.println(position.getX()+ " "+ position.getY());
     }
 
     public void update(float deltaTime) {
         super.move(velocity);
-       /* if (passedScreen()){
-            manager.remove(this);
-        }*/
+        if (passedScreen()){
+            selfDestruct();
+        }
     }
 
     public boolean passedScreen(){
         this.position = getPosition();
 
-        if (position.getY() - PROJECTILE_RADIUS <= 0) {
+        if (position.getY() + PROJECTILE_RADIUS <= 0) {
             return true;
         }
-        else if(position.getY() + PROJECTILE_RADIUS >= Main.getDisplayHeight()){
+        else if(position.getY() - PROJECTILE_RADIUS >= Main.getDisplayHeight()){
             return true;
         }
-        if (position.getX()- PROJECTILE_RADIUS <= 0){
+        if (position.getX() + PROJECTILE_RADIUS <= 0){
             return true;
         }
-        else if (position.getX() + PROJECTILE_RADIUS >= Main.getDisplayWidth()) {
+        else if (position.getX() - PROJECTILE_RADIUS >= Main.getDisplayWidth()) {
             return true;
         }
         return false;
+    }
+
+    @Override
+    protected void collisionResponse(Entity other) {
+        super.collisionResponse(other);
+        //setVisible(false);
+        selfDestruct();
     }
 
 

@@ -46,6 +46,7 @@ public class EntityManager {
         // the entityList when the for loop is running, we need to iterate through a copy of that list
 
         for (Entity entity: tempList){
+            //System.out.println(tempList);
             entity.update(deltaTime);
         }
 
@@ -53,13 +54,27 @@ public class EntityManager {
                                                         //entity in the list. Does not have to check the last
                                                         //element because it has already been checks by the other.
             for (int j = i + 1; j < tempList.size() - 2; j++) {
-                if (!(tempList.get(i) instanceof Player) && !(tempList.get(j) instanceof Projectile)) {
+                if ((tempList.get(i) instanceof Player)  && (tempList.get(j) instanceof Projectile)) {
+                   // System.out.println("Should not collide:");
+                   // System.out.println("i: "+ tempList.get(i)+" j: "+ tempList.get(j));
 
-                    if (!(tempList.get(i) instanceof Projectile) && !(tempList.get(j) instanceof Player)) {
-                        entityList.get(i).collide(entityList.get(j));
-                    }
-                    entityList.get(i).collide(entityList.get(j));
+                    //entityList.get(i).collide(entityList.get(j));
                 }
+                else if ((tempList.get(i) instanceof Projectile) && (tempList.get(j) instanceof Player)) {
+                   // System.out.println("Should not collide:");
+                   // System.out.println("i: "+ tempList.get(i)+" j: "+ tempList.get(j));
+                    //entityList.get(i).collide(entityList.get(j));
+                }
+                else if ((tempList.get(i) instanceof Projectile) && (tempList.get(j) instanceof Projectile)){ }
+
+                else {
+                    //System.out.println("Collide: ");
+                    //System.out.println("i: "+ tempList.get(i)+" j: "+ tempList.get(j));
+                    tempList.get(i).collide(tempList.get(j));
+                }
+
+                //System.out.println("i: "+ entityList.get(i)+" j: "+ entityList.get(j));
+
             }
         }
     }

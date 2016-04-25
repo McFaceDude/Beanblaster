@@ -31,7 +31,7 @@ abstract public class Entity extends Sprite implements Updatable {
 
     }
 
-    public void collide(Entity other){ //removes object if collision
+    public void collide(Entity other){
         if (collisionObject.intersects(other.collisionObject)) {
             collisionResponse(other);
             other.collisionResponse(this);

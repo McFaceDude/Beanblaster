@@ -17,9 +17,15 @@ public class Vector2D {
     public Vector2D(Vector2D vector){
         this(vector.x, vector.y);
     }
-    public void add(Vector2D v){
+    public Vector2D add(Vector2D v){
         x += v.getX();
         y += v.getY();
+        return this;
+    }
+    public Vector2D sub(Vector2D v){
+        x -= v.getX();
+        y -= v.getY();
+        return this;
     }
 
     public Vector2D normalize(){
@@ -66,6 +72,11 @@ public class Vector2D {
         return false;
     }
 
+    @Override
+    public String toString() {
+        return "( "+ x + " : " + y +" )" ;
+    }
+
     //endregion
 
     public static Vector2D zero(){
@@ -87,6 +98,7 @@ public class Vector2D {
     public static Vector2D normalized(Vector2D vector){
         return new Vector2D(vector).normalize();
     }
+
 
 }
 
