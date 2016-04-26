@@ -26,8 +26,8 @@ public class Scoreboard extends Entity{
     }
     @Override
     public void draw(Graphics g){
-        System.out.println(manager.getBeanification());
-        g.drawString("Percent of the Galaxy beanified: " +(int)(manager.getBeanification())+ " %", 300, 20);
+
+        g.drawString("Percent of the Galaxy beanified: " +(int)manager.getBeanification()+ " %", 300, 20);
 
     }
 
