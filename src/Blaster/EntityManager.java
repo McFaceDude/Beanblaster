@@ -3,6 +3,7 @@ package blaster;
 import blaster.entity.Entity;
 import blaster.entity.Player;
 import blaster.entity.Projectile;
+import blaster.entity.Scoreboard;
 import blaster.factory.EntityFactory;
 import blaster.factory.PlanetFactory;
 import blaster.factory.ProjectileFactory;
@@ -21,14 +22,21 @@ public class EntityManager {
     private ArrayList<EntityFactory> factoryList = new ArrayList<>();
     private Input input;
     Player player;
+    Scoreboard scoreboard;
+    private float totalBeanified;
+
+    private float planetCount;
+    private float beanification;
 
     public EntityManager(Input input){
        this.input = input;
     }
 
     public void init() throws SlickException {
+        scoreboard = new Scoreboard(this);
         player = new Player(input, this);
         entityList.add(player);
+        entityList.add(scoreboard);
 
     }
 
@@ -96,6 +104,21 @@ public class EntityManager {
             entity.draw(g);
         }
     }
+
+
+    public void addPlanetStatus(Boolean beanified){
+        planetCount += 1;
+        if (beanified){
+            this.totalBeanified += 1;
+        }
+
+        beanification = totalBeanified/planetCount;
+
+    }
+    public float getBeanification(){
+        return (int)(beanification*100);
+    }
+
 
     public void addEntityFactory(EntityFactory factory){
         factoryList.add(factory);

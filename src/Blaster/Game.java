@@ -21,6 +21,8 @@ public class Game extends BasicGameState {   //The state where you play the game
     EntityManager entityManager;
     public Input input;
 
+
+
     public Game (int state) {
         input = new Input(Main.DISPLAY_HEIGHT);
         entityManager = new EntityManager(input);
@@ -34,10 +36,13 @@ public class Game extends BasicGameState {   //The state where you play the game
         entityManager.init();
         entityManager.addEntityFactory(planetFactory);
         entityManager.addEntityFactory(projectileFactory);
+
+
     }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) {
         entityManager.draw(g);
+
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int milliseconds) throws SlickException {
@@ -48,5 +53,7 @@ public class Game extends BasicGameState {   //The state where you play the game
     public int getID() {
         return 1;
     }
+
+
 
 }

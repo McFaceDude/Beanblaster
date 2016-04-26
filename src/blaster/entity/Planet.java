@@ -3,6 +3,8 @@ package blaster.entity;
 import blaster.EntityManager;
 import blaster.Main;
 import blaster.Vector2D;
+import blaster.factory.PlanetFactory;
+import org.newdawn.slick.Game;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
@@ -11,7 +13,8 @@ import org.newdawn.slick.SlickException;
  */
 public abstract class Planet extends Entity {
 
-    private static final float SPEED = 3.0f;
+    private boolean planetBeanified = false;
+    private static final float SPEED = 2.0f;
     private int beanHits = 0;
     private int ANTI_BEAN_LEVEL;
     private Image beanImage;
@@ -36,6 +39,7 @@ public abstract class Planet extends Entity {
 
     public boolean passedScreen(){
         if (position.getY() >= Main.getDisplayHeight() + getRadius()){
+            manager.addPlanetStatus(planetBeanified);
             return true;
         }
         return false;
@@ -53,8 +57,9 @@ public abstract class Planet extends Entity {
     protected void collisionResponse(Entity other) {
         super.collisionResponse(other);
         beanHits += 1;
-        if (beanHits == ANTI_BEAN_LEVEL){
+        if (beanHits > ANTI_BEAN_LEVEL){
             beanHits = 0;
+            planetBeanified = true;
             try {
                 changeImage();
             } catch (SlickException e) {
