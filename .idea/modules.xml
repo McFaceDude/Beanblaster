@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Space Blaster.iml" filepath="$PROJECT_DIR$/Space Blaster.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Beanblaster.iml" filepath="$PROJECT_DIR$/Beanblaster.iml" />
     </modules>
   </component>
 </project>
+
