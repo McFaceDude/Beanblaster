@@ -9,7 +9,7 @@ import org.newdawn.slick.SlickException;
 /**
  * Created by Samuel on 2016-04-19.
  */
-public class Projectile extends Entity{
+public class Projectile extends Entity {
 
     private static final float PROJECTILE_RADIUS = 15;
     private static final float PROJECTILE_SPEED = 6.0f;
