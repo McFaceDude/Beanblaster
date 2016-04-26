@@ -11,7 +11,7 @@ import org.newdawn.slick.SlickException;
  */
 public abstract class Planet extends Entity {
 
-    private static final float SPEED = 2.0f;
+    private static final float SPEED = 1.0f;
 
     public Planet(Image image, Vector2D position, float radius, EntityManager manager) throws SlickException {
         super(image, position, radius, manager);
@@ -24,7 +24,7 @@ public abstract class Planet extends Entity {
     public void update(float deltaTime) {
         super.move(speed);
         if (passedScreen()){
-            manager.remove(this);
+           selfDestruct();
         }
 
     }

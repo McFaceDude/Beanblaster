@@ -58,7 +58,7 @@ abstract public class Entity extends Sprite implements Updatable {
 
     protected void collisionResponse(Entity other){}
 
-    protected void selfDestruct(){
+    protected void selfDestruct(){ //removes the entity from the entityList
         manager.remove(this);
     }
 

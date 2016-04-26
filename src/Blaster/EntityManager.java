@@ -50,26 +50,37 @@ public class EntityManager {
             entity.update(deltaTime);
         }
 
-        for (int i = 0; i < tempList.size() - 2; i++){  //Checks if any entity in the list collides with any other
-                                                        //entity in the list. Does not have to check the last
+        for (int i = 0; i < tempList.size() ; i++){  //Checks if any entity in the list collides with any other
+            //System.out.println("i: "+i+" templist.size: "+ tempList.size());
+            //System.out.println(tempList); //entity in the list. Does not have to check the last
                                                         //element because it has already been checks by the other.
-            for (int j = i + 1; j < tempList.size() - 2; j++) {
+            for (int j = i + 1; j < tempList.size() ; j++) {
+                //System.out.println("i: "+i+" templist.size: "+ tempList.size());
+               // System.out.println(tempList);
+                //System.out.println("");
                 if ((tempList.get(i) instanceof Player)  && (tempList.get(j) instanceof Projectile)) {
-                   // System.out.println("Should not collide:");
+                   // System.out.println("Should not collide(Player Projectile):");
                    // System.out.println("i: "+ tempList.get(i)+" j: "+ tempList.get(j));
+                   // System.out.println("");
 
                     //entityList.get(i).collide(entityList.get(j));
                 }
                 else if ((tempList.get(i) instanceof Projectile) && (tempList.get(j) instanceof Player)) {
-                   // System.out.println("Should not collide:");
-                   // System.out.println("i: "+ tempList.get(i)+" j: "+ tempList.get(j));
+                    //System.out.println("Should not collide(Projectile PLayer):");
+                    //System.out.println("i: "+ tempList.get(i)+" j: "+ tempList.get(j));
+                    //System.out.println("");
                     //entityList.get(i).collide(entityList.get(j));
                 }
-                else if ((tempList.get(i) instanceof Projectile) && (tempList.get(j) instanceof Projectile)){ }
+                else if ((tempList.get(i) instanceof Projectile) && (tempList.get(j) instanceof Projectile)){
+                    //System.out.println("Should not collide(Projectile Projectile):");
+                    //System.out.println("i: "+ tempList.get(i)+" j: "+ tempList.get(j));
+                    //System.out.println("");
+                }
 
                 else {
                     //System.out.println("Collide: ");
-                    //System.out.println("i: "+ tempList.get(i)+" j: "+ tempList.get(j));
+                   // System.out.println("i: "+ tempList.get(i)+" j: "+ tempList.get(j));
+                    //System.out.println("");
                     tempList.get(i).collide(tempList.get(j));
                 }
 

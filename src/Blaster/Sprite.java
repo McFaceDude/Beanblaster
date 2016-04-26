@@ -11,9 +11,9 @@ import org.newdawn.slick.SlickException;
  */
 abstract public class Sprite implements Drawable{ //for the moving and drawing of objects on the screen
 
-    Image image;
+    private Image image;
     protected Vector2D position;
-    boolean visible;
+    private boolean visible;
 
     public Sprite(Image image, Vector2D position) throws SlickException {
         loadImage(image);
