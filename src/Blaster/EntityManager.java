@@ -23,10 +23,8 @@ public class EntityManager {
     private Input input;
     Player player;
     Scoreboard scoreboard;
-    private float totalBeanified;
+    private int totalBeanified;
 
-    private float planetCount;
-    private float beanification;
 
     public EntityManager(Input input){
        this.input = input;
@@ -59,41 +57,15 @@ public class EntityManager {
         }
 
         for (int i = 0; i < tempList.size() ; i++){  //Checks if any entity in the list collides with any other
-            //System.out.println("i: "+i+" templist.size: "+ tempList.size());
-            //System.out.println(tempList); //entity in the list. Does not have to check the last
-                                                        //element because it has already been checks by the other.
+                                                     //entity in the list
             for (int j = i + 1; j < tempList.size() ; j++) {
-                //System.out.println("i: "+i+" templist.size: "+ tempList.size());
-               // System.out.println(tempList);
-                //System.out.println("");
-                if ((tempList.get(i) instanceof Player)  && (tempList.get(j) instanceof Projectile)) {
-                   // System.out.println("Should not collide(Player Projectile):");
-                   // System.out.println("i: "+ tempList.get(i)+" j: "+ tempList.get(j));
-                   // System.out.println("");
 
-                    //entityList.get(i).collide(entityList.get(j));
-                }
-                else if ((tempList.get(i) instanceof Projectile) && (tempList.get(j) instanceof Player)) {
-                    //System.out.println("Should not collide(Projectile PLayer):");
-                    //System.out.println("i: "+ tempList.get(i)+" j: "+ tempList.get(j));
-                    //System.out.println("");
-                    //entityList.get(i).collide(entityList.get(j));
-                }
-                else if ((tempList.get(i) instanceof Projectile) && (tempList.get(j) instanceof Projectile)){
-                    //System.out.println("Should not collide(Projectile Projectile):");
-                    //System.out.println("i: "+ tempList.get(i)+" j: "+ tempList.get(j));
-                    //System.out.println("");
-                }
-
+                if ((tempList.get(i) instanceof Player)  && (tempList.get(j) instanceof Projectile)) {}
+                else if ((tempList.get(i) instanceof Projectile) && (tempList.get(j) instanceof Player)) {}
+                else if ((tempList.get(i) instanceof Projectile) && (tempList.get(j) instanceof Projectile)) {}
                 else {
-                    //System.out.println("Collide: ");
-                   // System.out.println("i: "+ tempList.get(i)+" j: "+ tempList.get(j));
-                    //System.out.println("");
                     tempList.get(i).collide(tempList.get(j));
                 }
-
-                //System.out.println("i: "+ entityList.get(i)+" j: "+ entityList.get(j));
-
             }
         }
     }
@@ -105,18 +77,12 @@ public class EntityManager {
         }
     }
 
-
-    public void addPlanetStatus(Boolean beanified){
-        planetCount += 1;
-        if (beanified){
-            this.totalBeanified += 1;
-        }
-
-        beanification = totalBeanified/planetCount;
+    public void addBeanifiedPlanet(){
+        this.totalBeanified += 1;
 
     }
-    public float getBeanification(){
-        return (int)(beanification*100);
+    public int getBeanification(){
+        return totalBeanified;
     }
 
 

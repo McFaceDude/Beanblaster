@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/blaster/EntityManager.java" line="74" mnemonic="7" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="4a6c1ba6-d754-4fb7-99af-968b01c99fe6" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\Gustaf\Documents\Git\Beanblaster\Space Blaster.iml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Gustaf\Documents\Git\Beanblaster\old.iml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blaster/entity/Planet.java" afterPath="$PROJECT_DIR$/src/blaster/entity/Planet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blaster/entity/Player.java" afterPath="$PROJECT_DIR$/src/blaster/entity/Player.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blaster/entity/Projectile.java" afterPath="$PROJECT_DIR$/src/blaster/entity/Projectile.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blaster/entity/Scoreboard.java" afterPath="$PROJECT_DIR$/src/blaster/entity/Scoreboard.java" />
     </list>
     <ignored path="Ham Blaster.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -78,9 +72,12 @@
       <file leaf-file-name="EntityManager.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blaster/EntityManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1989" max-vertical-offset="2516">
-              <caret line="117" column="36" selection-start-line="117" selection-start-column="36" selection-end-line="117" selection-end-column="36" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="412" max-vertical-offset="1615">
+              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding>
+                <element signature="e#2679#2680#0" expanded="true" />
+                <element signature="e#2716#2717#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -88,8 +85,8 @@
       <file leaf-file-name="Scoreboard.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blaster/entity/Scoreboard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="714">
-              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+              <caret line="29" column="75" selection-start-line="29" selection-start-column="75" selection-end-line="29" selection-end-column="75" />
               <folding />
             </state>
           </provider>
@@ -98,18 +95,8 @@
       <file leaf-file-name="StandardPlanet.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blaster/entity/StandardPlanet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="544">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
               <caret line="18" column="48" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SuperPlanet.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/blaster/entity/SuperPlanet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="527" max-vertical-offset="629">
-              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -118,8 +105,8 @@
       <file leaf-file-name="Game.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blaster/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="748" max-vertical-offset="1088">
-              <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
+              <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -128,8 +115,8 @@
       <file leaf-file-name="Planet.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blaster/entity/Planet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1020" max-vertical-offset="1394">
-              <caret line="60" column="25" selection-start-line="60" selection-start-column="25" selection-end-line="60" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1207">
+              <caret line="57" column="71" selection-start-line="57" selection-start-column="71" selection-end-line="57" selection-end-column="71" />
               <folding />
             </state>
           </provider>
@@ -138,18 +125,18 @@
       <file leaf-file-name="Projectile.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blaster/entity/Projectile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="918" max-vertical-offset="1139">
-              <caret line="54" column="51" selection-start-line="54" selection-start-column="51" selection-end-line="54" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1054">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlanetGenerator.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="PlanetGenerator.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blaster/PlanetGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.12718205" vertical-offset="0" max-vertical-offset="1203">
-              <caret line="12" column="54" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="67" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
+              <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -158,8 +145,18 @@
       <file leaf-file-name="Player.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blaster/entity/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1598">
-              <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="72" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="106" max-vertical-offset="1462">
+              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/blaster/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.29358554" vertical-offset="0" max-vertical-offset="1216">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -168,7 +165,7 @@
       <file leaf-file-name="Entity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blaster/entity/Entity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="986" max-vertical-offset="1275">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1139">
               <caret line="58" column="19" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="19" />
               <folding />
             </state>
@@ -198,6 +195,13 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/src/blaster/PlanetGenerator.java" />
+        <option value="$PROJECT_DIR$/src/blaster/entity/Scoreboard.java" />
+        <option value="$PROJECT_DIR$/src/blaster/entity/Planet.java" />
+        <option value="$PROJECT_DIR$/src/blaster/EntityManager.java" />
+        <option value="$PROJECT_DIR$/src/blaster/entity/Projectile.java" />
+        <option value="$PROJECT_DIR$/src/blaster/entity/Player.java" />
+        <option value="$PROJECT_DIR$/src/blaster/Game.java" />
+        <option value="$PROJECT_DIR$/src/blaster/Main.java" />
       </list>
     </option>
   </component>
@@ -942,13 +946,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/blaster/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="41" column="12" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/blaster/Drawable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
@@ -971,50 +968,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/blaster/entity/Player.java">
+    <entry file="file://$PROJECT_DIR$/src/blaster/entity/SuperPlanet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="72" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/blaster/Game.java">
+    <entry file="file://$PROJECT_DIR$/src/blaster/PlanetGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blaster/entity/Entity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="58" column="19" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blaster/entity/Planet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="60" column="25" selection-start-line="60" selection-start-column="25" selection-end-line="60" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blaster/EntityManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1989" max-vertical-offset="2516">
-          <caret line="117" column="36" selection-start-line="117" selection-start-column="36" selection-end-line="117" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blaster/entity/Scoreboard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
+          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -1027,26 +992,69 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/blaster/entity/SuperPlanet.java">
+    <entry file="file://$PROJECT_DIR$/src/blaster/entity/Planet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1207">
+          <caret line="57" column="71" selection-start-line="57" selection-start-column="71" selection-end-line="57" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blaster/EntityManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="412" max-vertical-offset="1615">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="e#2679#2680#0" expanded="true" />
+            <element signature="e#2716#2717#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blaster/entity/Scoreboard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+          <caret line="29" column="75" selection-start-line="29" selection-start-column="75" selection-end-line="29" selection-end-column="75" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/blaster/entity/Projectile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1071">
-          <caret line="54" column="51" selection-start-line="54" selection-start-column="51" selection-end-line="54" selection-end-column="51" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1054">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/blaster/PlanetGenerator.java">
+    <entry file="file://$PROJECT_DIR$/src/blaster/entity/Entity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12718205" vertical-offset="0" max-vertical-offset="1203">
-          <caret line="12" column="54" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="67" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <caret line="58" column="19" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blaster/entity/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="106" max-vertical-offset="1462">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blaster/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blaster/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29358554" vertical-offset="0" max-vertical-offset="1216">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding />
         </state>
       </provider>
