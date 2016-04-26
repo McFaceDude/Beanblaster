@@ -13,8 +13,8 @@ import org.newdawn.slick.*;
  */
 public class Player extends Entity /*implements KeyListener */{
 
-    private static final float MAX_SPEED = 7f;
-    private static final float ACCELERATION = 5f;
+    private static final float MAX_SPEED = 5f;
+    private static final float ACCELERATION = 3f;
     private static final float FRICTION = 0.7f; //always <1
 
     private static final Vector2D STARTING_POSITION = new Vector2D(500, 400); //where the player spaceship will start
@@ -77,7 +77,7 @@ public class Player extends Entity /*implements KeyListener */{
     }
 
     @Override
-    protected void collisionResponse(Entity other) {
+    protected void collisionResponse(Entity other)  {
         super.collisionResponse(other);
         setVisible(false);
     }

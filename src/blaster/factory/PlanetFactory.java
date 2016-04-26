@@ -14,7 +14,7 @@ public class PlanetFactory implements EntityFactory {
     private static final float PLANET_START_Y = -200; //where the enemy spaceship will start in Y position
     private double time;
     private static final int PLANET_SPAWN_DELAY_MIN = 5; //in seconds
-    private static final int PLANET_SPAWN_DELAY_MAX = 15;
+    private static final int PLANET_SPAWN_DELAY_MAX = 8;
 
     public PlanetFactory(){
 

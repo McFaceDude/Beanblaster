@@ -54,7 +54,7 @@ public class Projectile extends Entity {
     @Override
     protected void collisionResponse(Entity other) {
         super.collisionResponse(other);
-        //setVisible(false);
+
         selfDestruct();
     }
 

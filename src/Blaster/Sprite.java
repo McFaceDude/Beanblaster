@@ -42,4 +42,6 @@ abstract public class Sprite implements Drawable{ //for the moving and drawing o
     public void setPosition(Vector2D position) {
         this.position = position;
     }
+
+
 }

@@ -11,11 +11,16 @@ import org.newdawn.slick.SlickException;
  */
 public abstract class Planet extends Entity {
 
-    private static final float SPEED = 1.0f;
+    private static final float SPEED = 3.0f;
+    private int beanHits = 0;
+    private int ANTI_BEAN_LEVEL;
+    private Image beanImage;
 
-    public Planet(Image image, Vector2D position, float radius, EntityManager manager) throws SlickException {
+    public Planet(Image image, Image beanImage, Vector2D position, float radius, EntityManager manager, int ANTI_BEAN_LEVEL) throws SlickException {
         super(image, position, radius, manager);
         speed.setY(SPEED);
+        this.beanImage = beanImage;
+        this.ANTI_BEAN_LEVEL = ANTI_BEAN_LEVEL;
         while (!canSpawn()) {
             randomisePositionX();
         }
@@ -42,6 +47,24 @@ public abstract class Planet extends Entity {
 
     protected static Vector2D randomPosition( float y, float radius){
         return new Vector2D(((float)Math.random()*(Main.getDisplayWidth() - radius*2) + radius), y);
+    }
+
+    @Override
+    protected void collisionResponse(Entity other) {
+        super.collisionResponse(other);
+        beanHits += 1;
+        if (beanHits == ANTI_BEAN_LEVEL){
+            beanHits = 0;
+            try {
+                changeImage();
+            } catch (SlickException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+    private void changeImage() throws SlickException {
+        loadImage(beanImage);
     }
 
 

@@ -13,12 +13,14 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class StandardPlanet extends Planet {
 
-    private static final String[] planetTextures = {"res/Planet-Small.png", "res/Planet-2-Small.png"};
+    private static final String[] planetTextures = {"res/Planet-2-Small.png"};
+    private static String BEAN_IMAGE= "res/Green-Planet-2-Small.png";
     private static final int STANDARD_PLANET_RADIUS = 35;
+    private static final int ANTI_BEAN_LEVEL = 2;
 
     public StandardPlanet( float positionY, EntityManager manager) throws SlickException {
 
-        super(new Image(planetTextures[ThreadLocalRandom.current().nextInt(planetTextures.length)]),
-                randomPosition(positionY, STANDARD_PLANET_RADIUS), STANDARD_PLANET_RADIUS, manager);   // constructor in Sprite
+        super(new Image(planetTextures[ThreadLocalRandom.current().nextInt(planetTextures.length)]), new Image(BEAN_IMAGE),
+                randomPosition(positionY, STANDARD_PLANET_RADIUS), STANDARD_PLANET_RADIUS, manager, ANTI_BEAN_LEVEL);   // constructor in Sprite
     }
 }
