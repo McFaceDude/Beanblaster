@@ -27,26 +27,25 @@ public abstract class Planet extends Entity {
         }
     }
 
+    protected static Vector2D randomPosition(float y, float radius) {
+        return new Vector2D(((float) Math.random() * (Main.getDisplayWidth() - radius * 2) + radius), y);
+    }
+
     public void update(float deltaTime) {
         super.move(speed);
-        if (passedScreen()){
-           selfDestruct();
+        if (passedScreen()) {
+            selfDestruct();
         }
 
     }
 
-    private boolean passedScreen(){
+    private boolean passedScreen() {
         return position.getY() >= Main.getDisplayHeight() + getRadius();
     }
 
-    private void randomisePositionX(){
+    private void randomisePositionX() {
         setPosition(randomPosition(position.getY(), getRadius()));
     }
-
-    protected static Vector2D randomPosition( float y, float radius){
-        return new Vector2D(((float)Math.random()*(Main.getDisplayWidth() - radius*2) + radius), y);
-    }
-
 
     private void changeImage() throws SlickException {
         loadImage(beanImage);
@@ -60,7 +59,7 @@ public abstract class Planet extends Entity {
     @Override
     public void visit(Projectile projectile) {
         super.visit(projectile);
-        if(intersects(projectile)){
+        if (intersects(projectile)) {
             collisionResponse(projectile);
             projectile.collisionResponse(this);
         }
@@ -69,7 +68,7 @@ public abstract class Planet extends Entity {
     @Override
     public void visit(Player player) {
         super.visit(player);
-        if(intersects(player)){
+        if (intersects(player)) {
             collisionResponse(player);
             player.collisionResponse(this);
         }
@@ -79,7 +78,7 @@ public abstract class Planet extends Entity {
     public void collisionResponse(Projectile projectile) {
         super.collisionResponse(projectile);
         beanHits += 1;
-        if (beanHits > ANTI_BEAN_LEVEL && beanHits<ANTI_BEAN_LEVEL +2){
+        if (beanHits > ANTI_BEAN_LEVEL && beanHits < ANTI_BEAN_LEVEL + 2) {
             manager.addBeanifiedPlanet();
             try {
                 changeImage();

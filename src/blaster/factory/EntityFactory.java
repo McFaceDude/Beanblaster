@@ -9,7 +9,7 @@ import org.newdawn.slick.SlickException;
 /**
  * Created by Samuel on 2016-04-21.
  */
-interface EntityFactory extends Updatable {
+public interface EntityFactory extends Updatable {
 
     boolean wantsToProduce(float deltaTime, Input input);
 

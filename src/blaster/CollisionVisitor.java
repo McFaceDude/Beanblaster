@@ -10,7 +10,9 @@ import blaster.entity.Projectile;
 public interface CollisionVisitor {
 
     void visit(Planet planet);
+
     void visit(Projectile projectile);
+
     void visit(Player player);
 
 

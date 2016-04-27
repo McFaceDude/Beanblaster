@@ -10,11 +10,11 @@ import org.newdawn.slick.SlickException;
 /**
  * Created by Samuel on 2016-04-26.
  */
-public class Scoreboard extends Entity{
+public class Scoreboard extends Entity {
 
     private static final Vector2D POSITION = new Vector2D(2000, 20);
     private static final float RADIUS = 0;
-    private static String IMAGE = "res/Player-Bean-Small.png" ;
+    private static String IMAGE = "res/Player-Bean-Small.png";
 
 
     public Scoreboard(EntityManager manager) throws SlickException {
@@ -25,8 +25,8 @@ public class Scoreboard extends Entity{
     }
 
     @Override
-    public void draw(Graphics g){
-        g.drawString("Planets Beanified: " +manager.getTotalBeanified(), 350, 20);
+    public void draw(Graphics g) {
+        g.drawString("Planets Beanified: " + manager.getTotalBeanified(), 350, 20);
     }
 
     @Override

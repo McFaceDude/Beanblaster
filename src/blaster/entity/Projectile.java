@@ -26,24 +26,22 @@ public class Projectile extends Entity {
 
     public void update(float deltaTime) {
         super.move(velocity);
-        if (passedScreen()){
+        if (passedScreen()) {
             selfDestruct();
         }
     }
 
-    private boolean passedScreen(){
+    private boolean passedScreen() {
         this.position = getPosition();
 
         if (position.getY() + PROJECTILE_RADIUS <= 0) {
             return true;
-        }
-        else if(position.getY() - PROJECTILE_RADIUS >= Main.getDisplayHeight()){
+        } else if (position.getY() - PROJECTILE_RADIUS >= Main.getDisplayHeight()) {
             return true;
         }
-        if (position.getX() + PROJECTILE_RADIUS <= 0){
+        if (position.getX() + PROJECTILE_RADIUS <= 0) {
             return true;
-        }
-        else if (position.getX() - PROJECTILE_RADIUS >= Main.getDisplayWidth()) {
+        } else if (position.getX() - PROJECTILE_RADIUS >= Main.getDisplayWidth()) {
             return true;
         }
         return false;
@@ -57,7 +55,7 @@ public class Projectile extends Entity {
     @Override
     public void visit(Planet planet) {
         super.visit(planet);
-        if(intersects(planet)){
+        if (intersects(planet)) {
             collisionResponse(planet);
             planet.collisionResponse(this);
         }

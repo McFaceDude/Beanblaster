@@ -4,15 +4,16 @@ import blaster.CollisionVisitor;
 import blaster.EntityManager;
 import blaster.Main;
 import blaster.Vector2D;
-import blaster.factory.ProjectileFactory;
-import org.newdawn.slick.*;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
+import org.newdawn.slick.SlickException;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Samuel
  * Date: 2013-10-06
  */
-public class Player extends Entity /*implements KeyListener */{
+public class Player extends Entity /*implements KeyListener */ {
 
     private static final float MAX_SPEED = 4f;
     private static final float ACCELERATION = 2f;
@@ -22,7 +23,7 @@ public class Player extends Entity /*implements KeyListener */{
     private static final Vector2D RESPAWN_POSITION = new Vector2D(STARTING_POSITION.getX(), STARTING_POSITION.getY());
     private static final float PLAYER_RADIUS = 50; //Radius of player
 
-    private static String PLAYER_TEXTURE = "res/Player-Bean-Small.png" ;
+    private static String PLAYER_TEXTURE = "res/Player-Bean-Small.png";
     private Input input;
     private Vector2D speed;
 
@@ -36,19 +37,26 @@ public class Player extends Entity /*implements KeyListener */{
     public void update(float deltaTime) {
         Vector2D direction = Vector2D.zero();
 
-        if(input.isKeyDown(Input.KEY_UP)){ direction.setY(-1); }
-        if(input.isKeyDown(Input.KEY_DOWN)){direction.setY(1); }
-        if(input.isKeyDown(Input.KEY_LEFT)){direction.setX(-1);}
-        if(input.isKeyDown(Input.KEY_RIGHT)){direction.setX(1);}
-
-        if(direction.equals( Vector2D.zero())){
-            speed.lerp(Vector2D.zero(), FRICTION*deltaTime);
+        if (input.isKeyDown(Input.KEY_UP)) {
+            direction.setY(-1);
         }
-        else {
+        if (input.isKeyDown(Input.KEY_DOWN)) {
+            direction.setY(1);
+        }
+        if (input.isKeyDown(Input.KEY_LEFT)) {
+            direction.setX(-1);
+        }
+        if (input.isKeyDown(Input.KEY_RIGHT)) {
+            direction.setX(1);
+        }
+
+        if (direction.equals(Vector2D.zero())) {
+            speed.lerp(Vector2D.zero(), FRICTION * deltaTime);
+        } else {
             direction.normalize();
             speed.add(Vector2D.multiply(direction, ACCELERATION * deltaTime));
         }
-        if(speed.getLength()>MAX_SPEED ){
+        if (speed.getLength() > MAX_SPEED) {
             Vector2D currentDirection = Vector2D.normalized(speed);
             speed = Vector2D.multiply(currentDirection, MAX_SPEED);
         }
@@ -57,28 +65,26 @@ public class Player extends Entity /*implements KeyListener */{
 
     }
 
-    private void constrainToScreen(){ //Moves the player inside the screen if outside of the bound
+    private void constrainToScreen() { //Moves the player inside the screen if outside of the bound
         this.position = getPosition();
 
         if (position.getY() <= 0 + PLAYER_RADIUS) {
             position.setY(0 + PLAYER_RADIUS);
+        } else if (position.getY() >= Main.getDisplayHeight() - PLAYER_RADIUS) {
+            position.setY(Main.getDisplayHeight() - PLAYER_RADIUS);
         }
-        else if(position.getY() >= Main.getDisplayHeight() - PLAYER_RADIUS){
-            position.setY(Main.getDisplayHeight()-PLAYER_RADIUS);
-        }
-        if (position.getX() <=0 + PLAYER_RADIUS){
+        if (position.getX() <= 0 + PLAYER_RADIUS) {
             position.setX(0 + PLAYER_RADIUS);
-        }
-        else if (position.getX() >= Main.getDisplayWidth() - PLAYER_RADIUS) {
+        } else if (position.getX() >= Main.getDisplayWidth() - PLAYER_RADIUS) {
             position.setX(Main.getDisplayWidth() - PLAYER_RADIUS);
         }
     }
 
-    public Vector2D getPosition(){
+    public Vector2D getPosition() {
         return this.position;
     }
 
-    private void respawn(){
+    private void respawn() {
         Vector2D temp = new Vector2D(RESPAWN_POSITION);
         setPosition(temp);
     }
@@ -97,7 +103,7 @@ public class Player extends Entity /*implements KeyListener */{
     @Override
     public void visit(Planet planet) {
         super.visit(planet);
-        if(intersects(planet)){
+        if (intersects(planet)) {
             collisionResponse(planet);
             planet.collisionResponse(this);
 

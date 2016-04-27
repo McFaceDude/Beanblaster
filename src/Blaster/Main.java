@@ -12,26 +12,22 @@ import org.newdawn.slick.state.StateBasedGame;
  */
 public class Main extends StateBasedGame {
 
-    private static final String GAME_NAME= "Bean Blaster!";
-    private static final int DISPLAY_WIDTH= 1000;
-    static final int DISPLAY_HEIGHT= 600;
+    static final int DISPLAY_HEIGHT = 600;
+    private static final String GAME_NAME = "Bean Blaster!";
+    private static final int DISPLAY_WIDTH = 1000;
     private static final int GAME = 1;
 
-    private Main(String GAME_NAME){
+    private Main(String GAME_NAME) {
         super(GAME_NAME);
         this.addState(new Game(GAME));
 
     }
 
-    public void initStatesList(GameContainer gc) throws SlickException {
-        this.enterState(GAME);
-    }
-
     public static void main(String[] args) {
         AppGameContainer appgc;
-        try{
+        try {
             appgc = new AppGameContainer(new Main(GAME_NAME));
-            appgc.setDisplayMode(DISPLAY_WIDTH,DISPLAY_HEIGHT, false);
+            appgc.setDisplayMode(DISPLAY_WIDTH, DISPLAY_HEIGHT, false);
             appgc.setTargetFrameRate(60);
             appgc.start();
 
@@ -46,5 +42,9 @@ public class Main extends StateBasedGame {
 
     public static int getDisplayWidth() {
         return DISPLAY_WIDTH;
+    }
+
+    public void initStatesList(GameContainer gc) throws SlickException {
+        this.enterState(GAME);
     }
 }

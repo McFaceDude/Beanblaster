@@ -14,26 +14,25 @@ public class Circle {
         this.position = position;
     }
 
+    public float getRadius() {
+
+        return radius;
+    }
+
     public void setRadius(float radius) {
         this.radius = radius;
+    }
+
+    public Vector2D getPosition() {
+        return position;
     }
 
     public void setPosition(Vector2D position) {
         this.position = position;
     }
 
-
-    public float getRadius() {
-
-        return radius;
-    }
-
-    public Vector2D getPosition(){
-        return position;
-    }
-
     public boolean intersects(Circle other) {
-        return Vector2D.distance(this.position, other.position) <= this.radius+other.radius;
+        return Vector2D.distance(this.position, other.position) <= this.radius + other.radius;
     }
 
 }

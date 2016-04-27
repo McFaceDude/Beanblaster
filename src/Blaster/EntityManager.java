@@ -2,11 +2,8 @@ package blaster;
 
 import blaster.entity.Entity;
 import blaster.entity.Player;
-import blaster.entity.Projectile;
 import blaster.entity.Scoreboard;
 import blaster.factory.EntityFactory;
-import blaster.factory.PlanetFactory;
-import blaster.factory.ProjectileFactory;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
@@ -26,8 +23,8 @@ public class EntityManager {
     private int totalBeanified;
 
 
-    public EntityManager(Input input){
-       this.input = input;
+    public EntityManager(Input input) {
+        this.input = input;
     }
 
     public void init() throws SlickException {
@@ -40,9 +37,9 @@ public class EntityManager {
 
     public void update(float deltaTime) throws SlickException {
 
-        for (EntityFactory entityFactory : factoryList){
+        for (EntityFactory entityFactory : factoryList) {
 
-            if (entityFactory.wantsToProduce(deltaTime, input)){
+            if (entityFactory.wantsToProduce(deltaTime, input)) {
                 entityList.add(entityFactory.produce(this));
             }
         }
@@ -50,51 +47,55 @@ public class EntityManager {
         ArrayList<Entity> tempList = new ArrayList<>(entityList); //Because a entity can remove itself from
         // the entityList when the for loop is running, we need to iterate through a copy of that list
 
-        for (Entity entity: tempList){;
+        for (Entity entity : tempList) {
+
             entity.update(deltaTime);
         }
 
-        for (int i = 0; i < tempList.size() ; i++){  //Checks if any entity in the list collides with any other
-                                                     //entity in the list
-            for (int j = i + 1; j < tempList.size() ; j++) {
+        for (int i = 0; i < tempList.size(); i++) {  //Checks if any entity in the list collides with any other
+            //entity in the list
+            for (int j = i + 1; j < tempList.size(); j++) {
                 tempList.get(i).collide(tempList.get(j));
             }
         }
     }
 
-    public void draw(Graphics g){
+    public void draw(Graphics g) {
 
-        for (Entity entity : entityList){
+        for (Entity entity : entityList) {
             entity.draw(g);
         }
     }
 
-    public void addBeanifiedPlanet(){
+    public void addBeanifiedPlanet() {
         this.totalBeanified += 1;
 
     }
-    public int getTotalBeanified(){
+
+    public int getTotalBeanified() {
         return totalBeanified;
     }
 
 
-    public void addEntityFactory(EntityFactory factory){
+    public void addEntityFactory(EntityFactory factory) {
         factoryList.add(factory);
     }
 
-    public void remove(Entity entity){
+    public void remove(Entity entity) {
         entityList.remove(entity);
     }
 
-    public boolean isSpaceOccupied(Entity asker){
-        for (Entity entity : entityList){
-            if (entity.intersects(asker)){
+    public boolean isSpaceOccupied(Entity asker) {
+        for (Entity entity : entityList) {
+            if (entity.intersects(asker)) {
                 return true;
             }
         }
         return false;
     }
-    public Player getPlayer(){
+
+    public Player getPlayer() {
         return player;
     }
 }
+

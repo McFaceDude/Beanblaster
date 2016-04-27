@@ -22,8 +22,7 @@ public class Game extends BasicGameState {   //The state where you play the game
     private Input input;
 
 
-
-    public Game (int state) {
+    public Game(int state) {
         input = new Input(Main.DISPLAY_HEIGHT);
         entityManager = new EntityManager(input);
     }
@@ -41,18 +40,16 @@ public class Game extends BasicGameState {   //The state where you play the game
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) {
         entityManager.draw(g);
-
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int milliseconds) throws SlickException {
-        float deltaTime = 1f/milliseconds; //converts to seconds from milliseconds
+        float deltaTime = 1f / milliseconds; //converts to seconds from milliseconds
         entityManager.update(deltaTime);
     }
 
     public int getID() {
         return 1;
     }
-
 
 
 }

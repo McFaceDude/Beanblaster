@@ -12,30 +12,30 @@ import org.newdawn.slick.SlickException;
 abstract public class Entity extends Sprite implements Updatable, CollisionVisitor, CollisionElement {
 
     protected Vector2D speed;
+    protected EntityManager manager;
     private Circle collisionObject; //Hitbox in circle shape
     private boolean alive;
-    protected EntityManager manager;
 
     public Entity(Image image, Vector2D position, float radius, EntityManager manager) throws SlickException {
         super(image, position);
         this.manager = manager;
-        speed = new Vector2D(0,0);
+        speed = new Vector2D(0, 0);
         collisionObject = new Circle(radius, position); //Hitbox for the spaceship
         alive = true; //Changes when colliding with something
     }
 
-    protected void move(Vector2D speed){
+    protected void move(Vector2D speed) {
 
         this.position.add(speed);
         collisionObject.setPosition(position);
     }
 
-    public boolean intersects(Entity other){ //checks if objects intersect
+    public boolean intersects(Entity other) { //checks if objects intersect
 
         return collisionObject.intersects(other.collisionObject);
     }
 
-    public float getRadius(){
+    public float getRadius() {
         return collisionObject.getRadius();
     }
 
@@ -44,11 +44,11 @@ abstract public class Entity extends Sprite implements Updatable, CollisionVisit
         collisionObject.setPosition(position);
     }
 
-    protected void selfDestruct(){ //removes the entity from the entityList
+    protected void selfDestruct() { //removes the entity from the entityList
         manager.remove(this);
     }
 
-    protected boolean canSpawn(){
+    protected boolean canSpawn() {
         return !manager.isSpaceOccupied(this);
     }
 
