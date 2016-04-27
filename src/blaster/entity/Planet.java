@@ -1,5 +1,6 @@
 package blaster.entity;
 
+import blaster.CollisionVisitor;
 import blaster.EntityManager;
 import blaster.Main;
 import blaster.Vector2D;
@@ -51,9 +52,37 @@ public abstract class Planet extends Entity {
         return new Vector2D(((float)Math.random()*(Main.getDisplayWidth() - radius*2) + radius), y);
     }
 
+
+    private void changeImage() throws SlickException {
+        loadImage(beanImage);
+    }
+
     @Override
-    protected void collisionResponse(Entity other) {
-        super.collisionResponse(other);
+    public void collide(CollisionVisitor collisionVisitor) {
+        collisionVisitor.visit(this);
+    }
+
+    @Override
+    public void visit(Projectile projectile) {
+        super.visit(projectile);
+        if(intersects(projectile)){
+            collisionResponse(projectile);
+            projectile.collisionResponse(this);
+        }
+    }
+
+    @Override
+    public void visit(Player player) {
+        super.visit(player);
+        if(intersects(player)){
+            collisionResponse(player);
+            player.collisionResponse(this);
+        }
+    }
+
+    @Override
+    public void collisionResponse(Projectile projectile) {
+        super.collisionResponse(projectile);
         beanHits += 1;
         if (beanHits > ANTI_BEAN_LEVEL && beanHits<ANTI_BEAN_LEVEL +2){
             manager.addBeanifiedPlanet();
@@ -63,11 +92,5 @@ public abstract class Planet extends Entity {
                 e.printStackTrace();
             }
         }
-
     }
-    private void changeImage() throws SlickException {
-        loadImage(beanImage);
-    }
-
-
 }

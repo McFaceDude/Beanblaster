@@ -1,5 +1,6 @@
 package blaster.entity;
 
+import blaster.CollisionVisitor;
 import blaster.EntityManager;
 import blaster.Vector2D;
 import org.newdawn.slick.Graphics;
@@ -31,5 +32,8 @@ public class Scoreboard extends Entity{
     }
 
 
+    @Override
+    public void collide(CollisionVisitor collisionVisitor) {
 
+    }
 }

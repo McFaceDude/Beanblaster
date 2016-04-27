@@ -1,5 +1,6 @@
 package blaster.entity;
 
+import blaster.CollisionVisitor;
 import blaster.EntityManager;
 import blaster.Main;
 import blaster.Vector2D;
@@ -18,6 +19,7 @@ public class Player extends Entity /*implements KeyListener */{
     private static final float FRICTION = 0.7f; //always <1
 
     private static final Vector2D STARTING_POSITION = new Vector2D(500, 400); //where the player spaceship will start
+    private static final Vector2D RESPAWN_POSITION = new Vector2D(STARTING_POSITION.getX(), STARTING_POSITION.getY());
     private static final float PLAYER_RADIUS = 50; //Radius of player
 
     private static String PLAYER_TEXTURE = "res/Player-Bean-Small.png" ;
@@ -74,20 +76,35 @@ public class Player extends Entity /*implements KeyListener */{
         }
     }
 
-    @Override
-    protected void collisionResponse(Entity other)  {
-        super.collisionResponse(other);
-        //respawn();
-        selfDestruct();
 
-    }
 
     public Vector2D getPosition(){
         return this.position;
     }
 
     private void respawn(){
-        this.position = getPosition();
-        setPosition(STARTING_POSITION);
+        Vector2D temp = new Vector2D(RESPAWN_POSITION);
+        setPosition(temp);
+    }
+
+    @Override
+    public void collide(CollisionVisitor collisionVisitor) {
+        collisionVisitor.visit(this);
+    }
+
+    @Override
+    public void collisionResponse(Planet planet) {
+        super.collisionResponse(planet);
+        respawn();
+    }
+
+    @Override
+    public void visit(Planet planet) {
+        super.visit(planet);
+        if(intersects(planet)){
+            collisionResponse(planet);
+            planet.collisionResponse(this);
+
+        }
     }
 }
