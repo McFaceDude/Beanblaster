@@ -14,7 +14,7 @@ public class SuperPlanet extends Planet {
     private static final String[] planetTextures = {"res/Super-Planet.png"};
     private static final int SUPER_PLANET_RADIUS = 70;
     private static final int ANTI_BEAN_LEVEL = 3;
-    private static String BEAN_IMAGE = "res/Green-Super-Planet.png";
+    private static String BEAN_IMAGE = "res/Super-Planet-Green.png";
 
     public SuperPlanet(float positionY, EntityManager manager) throws SlickException {
 
