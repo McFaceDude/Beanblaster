@@ -29,14 +29,13 @@ public class Game extends BasicGameState {   //The state where you play the game
     }
 
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
+
         EntityFactory planetFactory = new PlanetFactory();
         EntityFactory projectileFactory = new ProjectileFactory();
-
 
         entityManager.init();
         entityManager.addEntityFactory(planetFactory);
         entityManager.addEntityFactory(projectileFactory);
-
 
     }
 

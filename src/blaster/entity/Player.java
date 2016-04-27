@@ -13,14 +13,13 @@ import org.newdawn.slick.*;
  */
 public class Player extends Entity /*implements KeyListener */{
 
-    private static final float MAX_SPEED = 5f;
-    private static final float ACCELERATION = 3f;
+    private static final float MAX_SPEED = 4f;
+    private static final float ACCELERATION = 2f;
     private static final float FRICTION = 0.7f; //always <1
 
     private static final Vector2D STARTING_POSITION = new Vector2D(500, 400); //where the player spaceship will start
     private static final float PLAYER_RADIUS = 50; //Radius of player
-    //private float mouseX;
-    //private float mouseY;
+
     private static String PLAYER_TEXTURE = "res/Player-Bean-Small.png" ;
     private Input input;
     private Vector2D speed;
@@ -36,8 +35,6 @@ public class Player extends Entity /*implements KeyListener */{
     public void update(float deltaTime) {
         Vector2D direction = Vector2D.zero();
 
-        //mouseX = input.getMouseX();
-        //mouseY = input.getMouseY();
 
         if(input.isKeyDown(Input.KEY_UP)){ direction.setY(-1); }
         if(input.isKeyDown(Input.KEY_DOWN)){direction.setY(1); }
@@ -57,6 +54,7 @@ public class Player extends Entity /*implements KeyListener */{
         }
         super.move(speed);
         constrainToScreen();
+
     }
 
     private void constrainToScreen(){ //Moves the player inside the screen if outside of the bound
@@ -79,10 +77,17 @@ public class Player extends Entity /*implements KeyListener */{
     @Override
     protected void collisionResponse(Entity other)  {
         super.collisionResponse(other);
-        setVisible(false);
+        //respawn();
+        selfDestruct();
+
     }
 
     public Vector2D getPosition(){
         return this.position;
+    }
+
+    private void respawn(){
+        this.position = getPosition();
+        setPosition(STARTING_POSITION);
     }
 }

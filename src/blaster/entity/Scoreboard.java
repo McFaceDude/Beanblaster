@@ -20,14 +20,13 @@ public class Scoreboard extends Entity{
         super(new Image(IMAGE), POSITION, RADIUS, manager);
     }
 
-    @Override
     public void update(float deltaTime) {
 
     }
     @Override
     public void draw(Graphics g){
 
-        g.drawString("Percent of the Galaxy beanified: " +(int)manager.getBeanification()+ " %", 300, 20);
+        g.drawString("Planets Beanified: " +manager.getBeanification(), 350, 20);
 
     }
 

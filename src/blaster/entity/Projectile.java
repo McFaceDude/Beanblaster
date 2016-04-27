@@ -22,8 +22,7 @@ public class Projectile extends Entity {
         Vector2D direction = new Vector2D(target).sub(position).normalize();
         this.velocity = new Vector2D(direction.getX() * PROJECTILE_SPEED, direction.getY() * PROJECTILE_SPEED);
 
-        //System.out.println(velocity.getX()+" "+ velocity.getY());
-        //System.out.println(position.getX()+ " "+ position.getY());
+
     }
 
     public void update(float deltaTime) {
