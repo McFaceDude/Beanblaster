@@ -1,5 +1,6 @@
 package blaster.entity;
 
+import blaster.CollisionVisitor;
 import blaster.EntityManager;
 import blaster.Main;
 import blaster.Vector2D;
@@ -50,11 +51,25 @@ public class Projectile extends Entity {
         return false;
     }
 
-    @Override
-    protected void collisionResponse(Entity other) {
-        super.collisionResponse(other);
 
-        selfDestruct();
+
+    @Override
+    public void collide(CollisionVisitor collisionVisitor) {
+        collisionVisitor.visit(this);
     }
 
+    @Override
+    public void visit(Planet planet) {
+        super.visit(planet);
+        if(intersects(planet)){
+            collisionResponse(planet);
+            planet.collisionResponse(this);
+        }
+    }
+
+    @Override
+    public void collisionResponse(Planet planet) {
+        super.collisionResponse(planet);
+        selfDestruct();
+    }
 }

@@ -41,31 +41,23 @@ public class EntityManager {
     public void update(float deltaTime) throws SlickException {
 
         for (EntityFactory entityFactory : factoryList){
-            //System.out.println(factoryList);
+
             if (entityFactory.wantsToProduce(deltaTime, input)){
                 entityList.add(entityFactory.produce(this));
             }
         }
-        //System.out.println(entityList);
-        //System.out.println("");
+
         ArrayList<Entity> tempList = new ArrayList<>(entityList); //Because a entity can remove itself from
         // the entityList when the for loop is running, we need to iterate through a copy of that list
 
-        for (Entity entity: tempList){
-            //System.out.println(tempList);
+        for (Entity entity: tempList){;
             entity.update(deltaTime);
         }
 
         for (int i = 0; i < tempList.size() ; i++){  //Checks if any entity in the list collides with any other
                                                      //entity in the list
             for (int j = i + 1; j < tempList.size() ; j++) {
-
-                if ((tempList.get(i) instanceof Player)  && (tempList.get(j) instanceof Projectile)) {}
-                else if ((tempList.get(i) instanceof Projectile) && (tempList.get(j) instanceof Player)) {}
-                else if ((tempList.get(i) instanceof Projectile) && (tempList.get(j) instanceof Projectile)) {}
-                else {
-                    tempList.get(i).collide(tempList.get(j));
-                }
+                tempList.get(i).collide(tempList.get(j));
             }
         }
     }

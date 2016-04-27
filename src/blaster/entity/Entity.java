@@ -9,7 +9,7 @@ import org.newdawn.slick.SlickException;
  * User: Samuel
  * Date: 2013-10-06
  */
-abstract public class Entity extends Sprite implements Updatable {
+abstract public class Entity extends Sprite implements Updatable, CollisionVisitor, CollisonElement {
 
     protected Vector2D speed;
     private Circle collisionObject; //Hitbox in circle shape
@@ -31,12 +31,6 @@ abstract public class Entity extends Sprite implements Updatable {
 
     }
 
-    public void collide(Entity other){
-        if (collisionObject.intersects(other.collisionObject)) {
-            collisionResponse(other);
-            other.collisionResponse(this);
-    }
-    }
     public boolean intersects(Entity other){ //checks if objects intersect
 
         if (collisionObject.intersects(other.collisionObject)){
@@ -45,18 +39,14 @@ abstract public class Entity extends Sprite implements Updatable {
         return false;
     }
 
-
     public float getRadius(){
         return collisionObject.getRadius();
     }
 
-    @Override
     public void setPosition(Vector2D position) {
         super.setPosition(position);
         collisionObject.setPosition(position);
     }
-
-    protected void collisionResponse(Entity other){}
 
     protected void selfDestruct(){ //removes the entity from the entityList
         manager.remove(this);
@@ -66,4 +56,29 @@ abstract public class Entity extends Sprite implements Updatable {
         return !manager.isSpaceOccupied(this);
     }
 
+
+
+    @Override
+    public void visit(Player player) {
+    }
+
+    @Override
+    public void visit(Projectile projectile) {
+    }
+
+    @Override
+    public void visit(Planet planet) {
+    }
+
+    @Override
+    public void collisionResponse(Projectile projectile) {
+    }
+
+    @Override
+    public void collisionResponse(Planet planet) {
+    }
+
+    @Override
+    public void collisionResponse(Player player) {
+    }
 }
