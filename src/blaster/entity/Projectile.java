@@ -22,8 +22,6 @@ public class Projectile extends Entity {
         super(new Image(PROJECTILE_TEXTURE), position, PROJECTILE_RADIUS, manager);
         Vector2D direction = new Vector2D(target).sub(position).normalize();
         this.velocity = new Vector2D(direction.getX() * PROJECTILE_SPEED, direction.getY() * PROJECTILE_SPEED);
-
-
     }
 
     public void update(float deltaTime) {
@@ -50,8 +48,6 @@ public class Projectile extends Entity {
         }
         return false;
     }
-
-
 
     @Override
     public void collide(CollisionVisitor collisionVisitor) {

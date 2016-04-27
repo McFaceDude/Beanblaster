@@ -12,14 +12,11 @@ import org.newdawn.slick.SlickException;
  */
 public class ProjectileFactory implements EntityFactory {
 
-
-    Input input;
-    boolean wasDown;
+    private Input input;
+    private boolean wasDown;
 
     public ProjectileFactory() {
-
         wasDown = false;
-
     }
 
     @Override
@@ -39,26 +36,10 @@ public class ProjectileFactory implements EntityFactory {
     @Override
     public Entity produce(EntityManager manager) throws SlickException {
 
-        //System.out.println("player position: " + manager.getPlayer().getPosition()+" positionX: "+
-          //      manager.getPlayer().getPosition().getX()+" positionY: "+ manager.getPlayer().getPosition().getY()+
-            //    " mouseX: "+ input.getMouseX() + " mouseY: "+ input.getMouseY());
-
-
-
         return new Projectile(new Vector2D(manager.getPlayer().getPosition()), new Vector2D(input.getMouseX(), input.getMouseY()), manager);
-
     }
 
     @Override
     public void update(float deltaTime) {
-
     }
-
-    public boolean mousePressed(Input input){
-
-
-        return input.isMousePressed(Input.MOUSE_LEFT_BUTTON) && !wasDown;
-    }
-
-
 }

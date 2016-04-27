@@ -8,7 +8,7 @@ import blaster.entity.Projectile;
 /**
  * Created by Samuel on 2016-04-27.
  */
-public interface CollisonElement {
+public interface CollisionElement {
 
     void collide(CollisionVisitor collisionVisitor);
     void collisionResponse(Planet planet);

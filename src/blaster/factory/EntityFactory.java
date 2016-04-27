@@ -9,10 +9,10 @@ import org.newdawn.slick.SlickException;
 /**
  * Created by Samuel on 2016-04-21.
  */
-public abstract interface EntityFactory extends Updatable {
+interface EntityFactory extends Updatable {
 
-    public abstract boolean wantsToProduce(float deltaTime, Input input);
+    boolean wantsToProduce(float deltaTime, Input input);
 
-    public abstract Entity produce(EntityManager manager) throws SlickException;
+    Entity produce(EntityManager manager) throws SlickException;
 
 }

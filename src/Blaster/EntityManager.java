@@ -21,8 +21,8 @@ public class EntityManager {
     private ArrayList<Entity> entityList = new ArrayList<Entity>();
     private ArrayList<EntityFactory> factoryList = new ArrayList<>();
     private Input input;
-    Player player;
-    Scoreboard scoreboard;
+    private Player player;
+    private Scoreboard scoreboard;
     private int totalBeanified;
 
 
@@ -73,7 +73,7 @@ public class EntityManager {
         this.totalBeanified += 1;
 
     }
-    public int getBeanification(){
+    public int getTotalBeanified(){
         return totalBeanified;
     }
 

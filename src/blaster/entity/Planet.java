@@ -12,7 +12,6 @@ import org.newdawn.slick.SlickException;
  */
 public abstract class Planet extends Entity {
 
-    private boolean planetBeanified = false;
     private static final float SPEED = 2.0f;
     private int beanHits = 0;
     private int ANTI_BEAN_LEVEL;
@@ -36,15 +35,11 @@ public abstract class Planet extends Entity {
 
     }
 
-    public boolean passedScreen(){
-        if (position.getY() >= Main.getDisplayHeight() + getRadius()){
-
-            return true;
-        }
-        return false;
+    private boolean passedScreen(){
+        return position.getY() >= Main.getDisplayHeight() + getRadius();
     }
 
-    public void randomisePositionX(){
+    private void randomisePositionX(){
         setPosition(randomPosition(position.getY(), getRadius()));
     }
 

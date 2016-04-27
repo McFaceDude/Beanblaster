@@ -21,7 +21,7 @@ abstract public class Sprite implements Drawable{ //for the moving and drawing o
         visible = true;
     }
 
-    public void loadImage(Image image) throws SlickException {
+    protected void loadImage(Image image) throws SlickException {
         this.image = image;
     }
 

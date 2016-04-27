@@ -16,11 +16,9 @@ public class PlanetFactory implements EntityFactory {
     private static final int PLANET_SPAWN_DELAY_MIN = 3; //in seconds
     private static final int PLANET_SPAWN_DELAY_MAX = 5;
 
-
     public PlanetFactory(){
 
     }
-
 
     @Override
     public boolean wantsToProduce(float deltaTime, Input input) {
@@ -44,6 +42,4 @@ public class PlanetFactory implements EntityFactory {
     public void update(float deltaTime) {
 
     }
-
-
 }

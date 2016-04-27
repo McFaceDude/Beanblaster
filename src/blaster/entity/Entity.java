@@ -9,11 +9,11 @@ import org.newdawn.slick.SlickException;
  * User: Samuel
  * Date: 2013-10-06
  */
-abstract public class Entity extends Sprite implements Updatable, CollisionVisitor, CollisonElement {
+abstract public class Entity extends Sprite implements Updatable, CollisionVisitor, CollisionElement {
 
     protected Vector2D speed;
     private Circle collisionObject; //Hitbox in circle shape
-    protected boolean alive;
+    private boolean alive;
     protected EntityManager manager;
 
     public Entity(Image image, Vector2D position, float radius, EntityManager manager) throws SlickException {
@@ -28,15 +28,11 @@ abstract public class Entity extends Sprite implements Updatable, CollisionVisit
 
         this.position.add(speed);
         collisionObject.setPosition(position);
-
     }
 
     public boolean intersects(Entity other){ //checks if objects intersect
 
-        if (collisionObject.intersects(other.collisionObject)){
-            return true;
-        }
-        return false;
+        return collisionObject.intersects(other.collisionObject);
     }
 
     public float getRadius(){
@@ -55,8 +51,6 @@ abstract public class Entity extends Sprite implements Updatable, CollisionVisit
     protected boolean canSpawn(){
         return !manager.isSpaceOccupied(this);
     }
-
-
 
     @Override
     public void visit(Player player) {

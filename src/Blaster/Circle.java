@@ -6,8 +6,8 @@ package blaster;
  */
 public class Circle {
 
-    float radius;
-    Vector2D position;
+    private float radius;
+    private Vector2D position;
 
     public Circle(float radius, Vector2D position) {
         this.radius = radius;

@@ -7,8 +7,8 @@ package blaster;
  */
 public class Vector2D {
 
-    float x;
-    float y;
+    private float x;
+    private float y;
 
     public Vector2D(float x, float y) {
         this.x = x;
@@ -41,7 +41,7 @@ public class Vector2D {
 
     }
 
-    //region geters/seters
+
     public float getX() {
         return x;
     }
@@ -77,13 +77,13 @@ public class Vector2D {
         return "( "+ x + " : " + y +" )" ;
     }
 
-    //endregion
+
 
     public static Vector2D zero(){
         return new Vector2D(0,0);
     }
 
-    public static Vector2D diff(Vector2D a, Vector2D b){
+    private static Vector2D diff(Vector2D a, Vector2D b){
         return new Vector2D(Math.abs(a.getX() - b.getX()), Math.abs(a.getY() - b.getY()));
     }
     public static float distance(Vector2D a, Vector2D b){

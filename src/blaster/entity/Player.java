@@ -30,13 +30,11 @@ public class Player extends Entity /*implements KeyListener */{
         super(new Image(PLAYER_TEXTURE), STARTING_POSITION, PLAYER_RADIUS, manager);
         this.input = input;
         speed = Vector2D.zero();
-
     }
 
     @Override
     public void update(float deltaTime) {
         Vector2D direction = Vector2D.zero();
-
 
         if(input.isKeyDown(Input.KEY_UP)){ direction.setY(-1); }
         if(input.isKeyDown(Input.KEY_DOWN)){direction.setY(1); }
@@ -75,8 +73,6 @@ public class Player extends Entity /*implements KeyListener */{
             position.setX(Main.getDisplayWidth() - PLAYER_RADIUS);
         }
     }
-
-
 
     public Vector2D getPosition(){
         return this.position;

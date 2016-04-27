@@ -22,18 +22,14 @@ public class Scoreboard extends Entity{
     }
 
     public void update(float deltaTime) {
-
     }
+
     @Override
     public void draw(Graphics g){
-
-        g.drawString("Planets Beanified: " +manager.getBeanification(), 350, 20);
-
+        g.drawString("Planets Beanified: " +manager.getTotalBeanified(), 350, 20);
     }
-
 
     @Override
     public void collide(CollisionVisitor collisionVisitor) {
-
     }
 }

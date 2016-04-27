@@ -12,19 +12,18 @@ import org.newdawn.slick.state.StateBasedGame;
  */
 public class Main extends StateBasedGame {
 
-    public static final String GAME_NAME= "Bean Blaster!";
-    public static final int DISPLAY_WIDTH= 1000;
-    public static final int DISPLAY_HEIGHT= 600;
-    public static final int GAME = 1;
+    private static final String GAME_NAME= "Bean Blaster!";
+    private static final int DISPLAY_WIDTH= 1000;
+    static final int DISPLAY_HEIGHT= 600;
+    private static final int GAME = 1;
 
-    public Main(String GAME_NAME){
+    private Main(String GAME_NAME){
         super(GAME_NAME);
         this.addState(new Game(GAME));
 
     }
 
     public void initStatesList(GameContainer gc) throws SlickException {
-        //To change body of implemented methods use File | Settings | File Templates.
         this.enterState(GAME);
     }
 

@@ -18,8 +18,8 @@ import org.newdawn.slick.state.StateBasedGame;
  */
 public class Game extends BasicGameState {   //The state where you play the game
 
-    EntityManager entityManager;
-    public Input input;
+    private EntityManager entityManager;
+    private Input input;
 
 
 

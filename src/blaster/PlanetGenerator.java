@@ -12,11 +12,11 @@ public class PlanetGenerator {
 
     private static PlanetBuilder[] planetBuilders = {(y, manager)->buildStandardPlanet(y, manager), (y,manager)->buildSuperPlanet(y, manager)};
 
-    public static Planet buildSuperPlanet( float positionY, EntityManager manager) throws SlickException{
+    private static Planet buildSuperPlanet(float positionY, EntityManager manager) throws SlickException{
         return new SuperPlanet(positionY, manager);
     }
 
-    public static Planet buildStandardPlanet( float positionY, EntityManager manager) throws SlickException{
+    private static Planet buildStandardPlanet(float positionY, EntityManager manager) throws SlickException{
         return new StandardPlanet(positionY, manager);
     }
 
