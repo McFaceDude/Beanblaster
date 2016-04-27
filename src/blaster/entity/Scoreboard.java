@@ -20,7 +20,6 @@ public class Scoreboard extends Entity{
         super(new Image(IMAGE), POSITION, RADIUS, manager);
     }
 
-    @Override
     public void update(float deltaTime) {
 
     }

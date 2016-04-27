@@ -54,6 +54,7 @@ public class Player extends Entity /*implements KeyListener */{
         }
         super.move(speed);
         constrainToScreen();
+
     }
 
     private void constrainToScreen(){ //Moves the player inside the screen if outside of the bound
@@ -76,11 +77,17 @@ public class Player extends Entity /*implements KeyListener */{
     @Override
     protected void collisionResponse(Entity other)  {
         super.collisionResponse(other);
+        //respawn();
         selfDestruct();
 
     }
 
     public Vector2D getPosition(){
         return this.position;
+    }
+
+    private void respawn(){
+        this.position = getPosition();
+        setPosition(STARTING_POSITION);
     }
 }
