@@ -6,6 +6,8 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * Package: ${PACKAGE_NAME}
@@ -13,10 +15,10 @@ import java.util.ArrayList;
  */
 public class EntityManager {
 
-    private final ArrayList<Entity> entityList = new ArrayList<>();
-    private final ArrayList<EntityFactory> factoryList = new ArrayList<>();
+    private final List<Entity> entityList = new ArrayList<>();
+    private final Collection<EntityFactory> factoryList = new ArrayList<>();
     private final Input input;
-    private Player player;
+    private Player player = null;
     private int totalBeanified;
 
 
@@ -41,7 +43,7 @@ public class EntityManager {
             }
         }
 
-        ArrayList<Entity> tempList = new ArrayList<>(entityList); //Because a entity can remove itself from
+        List<Entity> tempList = new ArrayList<>(entityList); //Because a entity can remove itself from
         // the entityList when the for loop is running, we need to iterate through a copy of that list
 
         for (Entity entity : tempList) {

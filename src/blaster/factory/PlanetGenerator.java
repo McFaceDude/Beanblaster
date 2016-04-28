@@ -9,12 +9,16 @@ import org.newdawn.slick.SlickException;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Package: ${PACKAGE_NAME}
  * Created by Samuel on 2016-04-18.
+ * The PlanetGenerator randomized between spwan methods to build the different types of planets and
+ * returns that planet. New planets can easily be added by adding a spawn method for them here.
  */
-class PlanetGenerator {
+final class PlanetGenerator {
 
-    private static final PlanetBuilder[] planetBuilders = {PlanetGenerator::buildStandardPlanet, PlanetGenerator::buildSuperPlanet};
+    private static final PlanetBuilder[] PLANET_BUILDERS = {PlanetGenerator::buildStandardPlanet, PlanetGenerator::buildSuperPlanet};
+
+    private PlanetGenerator() {
+    }
 
     //TODO check this
     private static Planet buildSuperPlanet(float positionY, EntityManager manager) throws SlickException {
@@ -28,7 +32,7 @@ class PlanetGenerator {
     static Planet buildPlanet(EntityManager manager) throws SlickException {
 
         Planet planet;
-        planet = planetBuilders[ThreadLocalRandom.current().nextInt(planetBuilders.length)].buildPlanet(PlanetFactory.PLANET_START_Y, manager);
+        planet = PLANET_BUILDERS[ThreadLocalRandom.current().nextInt(PLANET_BUILDERS.length)].buildPlanet(PlanetFactory.PLANET_START_Y, manager);
         return planet;
     }
 }

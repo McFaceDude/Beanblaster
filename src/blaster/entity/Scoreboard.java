@@ -15,6 +15,8 @@ class Scoreboard extends Entity {
     private static final Vector2D POSITION = new Vector2D(2000, 20);
     private static final float RADIUS = 0;
     private static final String IMAGE = "res/Player-Bean-Small.png";
+    private static final int X_POSITION = 350;
+    private static final int Y_POSITION = 20;
 
 
     Scoreboard(EntityManager manager) throws SlickException {
@@ -26,7 +28,7 @@ class Scoreboard extends Entity {
 
     @Override
     public void draw(Graphics g) {
-        g.drawString("Planets Beanified: " + manager.getTotalBeanified(), 350, 20);
+        g.drawString("Planets Beanified: " + manager.getTotalBeanified(), X_POSITION, Y_POSITION);
     }
 
     @Override

@@ -14,8 +14,8 @@ import org.newdawn.slick.SlickException;
  */
 public class Player extends Entity /*implements KeyListener */ {
 
-    private static final float MAX_SPEED = 4f;
-    private static final float ACCELERATION = 2f;
+    private static final float MAX_SPEED = 4.0f;
+    private static final float ACCELERATION = 2.0f;
     private static final float FRICTION = 0.7f; //always <1
 
     private static final Vector2D STARTING_POSITION = new Vector2D(500, 400); //where the player spaceship will start
@@ -59,13 +59,12 @@ public class Player extends Entity /*implements KeyListener */ {
             Vector2D currentDirection = Vector2D.normalized(speed);
             speed = Vector2D.multiply(currentDirection, MAX_SPEED);
         }
-        super.move(speed);
+        move(speed);
         constrainToScreen();
 
     }
 
     private void constrainToScreen() { //Moves the player inside the screen if outside of the bound
-        this.position = getPosition();
 
         if (position.getY() <= 0 + PLAYER_RADIUS) {
             position.setY(0 + PLAYER_RADIUS);

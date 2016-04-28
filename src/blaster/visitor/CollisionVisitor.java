@@ -5,7 +5,6 @@ import blaster.entity.Player;
 import blaster.entity.Projectile;
 
 /**
- * Project: Beanblaster.
  * Created by Samuel on 2016-04-27.
  */
 public interface CollisionVisitor {

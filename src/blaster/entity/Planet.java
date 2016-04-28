@@ -13,14 +13,14 @@ public abstract class Planet extends Entity {
 
     private static final float SPEED = 2.0f;
     private int beanHits = 0;
-    private final int ANTI_BEAN_LEVEL;
+    private final int antiBeanLevel;
     private final Image beanImage;
 
-    Planet(Image image, Image beanImage, Vector2D position, float radius, EntityManager manager, int ANTI_BEAN_LEVEL) {
+    Planet(Image image, Image beanImage, Vector2D position, float radius, EntityManager manager, int antiBeanLevel) {
         super(image, position, radius, manager);
         speed.setY(SPEED);
         this.beanImage = beanImage;
-        this.ANTI_BEAN_LEVEL = ANTI_BEAN_LEVEL;
+        this.antiBeanLevel = antiBeanLevel;
         while (!canSpawn()) {
             randomisePositionX();
         }
@@ -31,11 +31,10 @@ public abstract class Planet extends Entity {
     }
 
     public void update(float deltaTime) {
-        super.move(speed);
+        move(speed);
         if (passedScreen()) {
             selfDestruct();
         }
-
     }
 
     private boolean passedScreen() {
@@ -77,7 +76,7 @@ public abstract class Planet extends Entity {
     public void collisionResponse(Projectile projectile) {
         super.collisionResponse(projectile);
         beanHits += 1;
-        if (beanHits > ANTI_BEAN_LEVEL && beanHits < ANTI_BEAN_LEVEL + 2) {
+        if (beanHits > antiBeanLevel && beanHits < antiBeanLevel + 2) {
             manager.addBeanifiedPlanet();
 
             changeImage();

@@ -1,9 +1,9 @@
 package blaster.utility;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Samuel
- * Date: 2013-10-06
+ * Created by Samuel on 2013-10-06.
+ * Vector2D has a x and y value. The position of Entities are stored as Vectors.
+ * The vectors are used for directions from one position to another, distance and other things.
  */
 public class Vector2D {
 
@@ -24,12 +24,12 @@ public class Vector2D {
     }
 
     private static Vector2D diff(Vector2D a, Vector2D b) {
-        return new Vector2D(Math.abs(a.getX() - b.getX()), Math.abs(a.getY() - b.getY()));
+        return new Vector2D(Math.abs(a.x - b.x), Math.abs(a.y - b.y));
     }
 
     static float distance(Vector2D a, Vector2D b) {
         Vector2D diff = diff(a, b);
-        return (float) Math.sqrt(Math.pow(diff.getX(), 2) + Math.pow(diff.getY(), 2));
+        return (float) Math.sqrt(Math.pow(diff.x, 2) + Math.pow(diff.y, 2));
     }
 
     public static Vector2D multiply(Vector2D vector, float value) {
@@ -41,14 +41,14 @@ public class Vector2D {
     }
 
     public void add(Vector2D v) {
-        x += v.getX();
-        y += v.getY();
+        x += v.x;
+        y += v.y;
 
     }
 
     public Vector2D sub(Vector2D v) {
-        x -= v.getX();
-        y -= v.getY();
+        x -= v.x;
+        y -= v.y;
         return this;
     }
 
@@ -57,14 +57,14 @@ public class Vector2D {
         if (length == 0) {
             return this;
         }
-        x = x / length;
-        y = y / length;
+        x /= length;
+        y /= length;
         return this;
     }
 
     public void lerp(Vector2D target, float step) {
-        x = (x + step * (target.x - x));
-        y = (y + step * (target.y - y));
+        x += step * (target.x - x);
+        y += step * (target.y - y);
     }
 
     public float getX() {
@@ -101,7 +101,6 @@ public class Vector2D {
     public String toString() {
         return "( " + x + " : " + y + " )";
     }
-
 
 }
 

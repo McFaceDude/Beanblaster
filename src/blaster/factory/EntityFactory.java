@@ -7,8 +7,9 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
 /**
- * Project: Beanblaster.
  * Created by Samuel on 2016-04-21.
+ * All the Factories implements EntityFactory.
+ * the factories be asked if they want to produce any entities and if so they are asked to produce.
  */
 public interface EntityFactory extends Updatable {
 

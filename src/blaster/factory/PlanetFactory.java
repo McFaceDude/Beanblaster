@@ -6,8 +6,9 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
 /**
- * Package: ${PACKAGE_NAME}
- * Created by Gustaf on 2016-04-21.
+ * Created by Samuel on 2016-04-21.
+ * Spawns the planets at a random intervall between the two min and max values.
+ * It calls the PlanetGenrator class for poduction of the planets.
  */
 public class PlanetFactory implements EntityFactory {
 
@@ -15,10 +16,6 @@ public class PlanetFactory implements EntityFactory {
     private static final int PLANET_SPAWN_DELAY_MIN = 3; //in seconds
     private static final int PLANET_SPAWN_DELAY_MAX = 5;
     private double time;
-
-    public PlanetFactory() {
-
-    }
 
     @Override
     public boolean wantsToProduce(float deltaTime, Input input) {

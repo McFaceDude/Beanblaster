@@ -6,30 +6,30 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Samuel
- * Date: 2013-10-06
+ * Created by Samuel on 2013-10-06
+ * The main class for the project. Uses the slick library and extends StateBasedGame in slick.
+ * Main calls the game class which "starts up" the game.
+ * The Main class sets the size of the window in which the game is played.
  */
-public class Main extends StateBasedGame {
+public final class Main extends StateBasedGame {
 
     static final int DISPLAY_HEIGHT = 600;
-    private static String GAME_NAME = "Bean Blaster!";
     private static final int DISPLAY_WIDTH = 1000;
     private static final int GAME = 1;
+    private static final int FRAME_RATE = 60;
 
-    private Main(String GAME_NAME) {
-        super(GAME_NAME);
-        Main.GAME_NAME = GAME_NAME;
+    private Main(String gameName) {
+        super(gameName);
         this.addState(new Game());
 
     }
 
     public static void main(String[] args) {
-        AppGameContainer appgc;
         try {
-            appgc = new AppGameContainer(new Main(GAME_NAME));
+            String gameName = "Bean Blaster!";
+            AppGameContainer appgc = new AppGameContainer(new Main(gameName));
             appgc.setDisplayMode(DISPLAY_WIDTH, DISPLAY_HEIGHT, false);
-            appgc.setTargetFrameRate(60);
+            appgc.setTargetFrameRate(FRAME_RATE);
             appgc.start();
 
         } catch (SlickException e) {
@@ -45,7 +45,7 @@ public class Main extends StateBasedGame {
         return DISPLAY_WIDTH;
     }
 
-    public void initStatesList(GameContainer gc) throws SlickException {
+    public void initStatesList(GameContainer gc) {
         this.enterState(GAME);
     }
 }

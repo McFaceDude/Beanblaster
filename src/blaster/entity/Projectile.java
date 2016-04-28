@@ -25,7 +25,7 @@ public class Projectile extends Entity {
     }
 
     public void update(float deltaTime) {
-        super.move(velocity);
+        move(velocity);
         if (passedScreen()) {
             selfDestruct();
         }
@@ -34,14 +34,10 @@ public class Projectile extends Entity {
     private boolean passedScreen() {
         this.position = getPosition();
 
-        if (position.getY() + PROJECTILE_RADIUS <= 0) {
-            return true;
-        } else if (position.getY() - PROJECTILE_RADIUS >= Main.getDisplayHeight()) {
+        if (position.getY() + PROJECTILE_RADIUS <= 0 || position.getY() - PROJECTILE_RADIUS >= Main.getDisplayHeight()) {
             return true;
         }
-        if (position.getX() + PROJECTILE_RADIUS <= 0) {
-            return true;
-        } else if (position.getX() - PROJECTILE_RADIUS >= Main.getDisplayWidth()) {
+        if (position.getX() + PROJECTILE_RADIUS <= 0 || position.getX() - PROJECTILE_RADIUS >= Main.getDisplayWidth()) {
             return true;
         }
         return false;

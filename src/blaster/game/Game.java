@@ -13,9 +13,12 @@ import org.newdawn.slick.state.StateBasedGame;
 
 
 /**
- * Created with IntelliJ IDEA.
- * User: Samuel
- * Date: 2013-10-11
+ * Created by Samuel on 2013-10-11
+ * The Game class created the entityManager obeject which manages all the entities on the screen.
+ * It adds the factories which produces the entities. If you wanted to add a new factory which produces
+ * for example power upps in the game you would create that factory and then Game would add it to enityManager.
+ * Game also calls the update method in EntityManager which upates all the entities so that
+ * they can move and spawn and so on.
  */
 class Game extends BasicGameState {
 
@@ -43,7 +46,7 @@ class Game extends BasicGameState {
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int milliseconds) throws SlickException {
-        float deltaTime = 1f / milliseconds; //converts to seconds from milliseconds
+        float deltaTime = 1.0f / milliseconds; //converts to seconds from milliseconds
         entityManager.update(deltaTime);
     }
 

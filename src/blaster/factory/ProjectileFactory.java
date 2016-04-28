@@ -13,7 +13,7 @@ import org.newdawn.slick.SlickException;
  */
 public class ProjectileFactory implements EntityFactory {
 
-    private Input input;
+    private Input input = null;
     private boolean wasDown;
 
     public ProjectileFactory() {

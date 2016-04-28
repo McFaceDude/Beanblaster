@@ -5,14 +5,14 @@ import org.newdawn.slick.Image;
 
 
 /**
- * Created with IntelliJ IDEA.
- * User: Samuel
- * Date: 2013-10-05
+ * Created by Samuel on 2013-10-05
+ * The class draws all the images in the game and moves the obejct.
+ * All the entities inherits from Sprite.
  */
-abstract public class Sprite implements Drawable { //for the moving and drawing of objects on the screen
+public class Sprite { //for the moving and drawing of objects on the screen
 
     protected Vector2D position;
-    private Image image;
+    private Image image = null;
     private final boolean visible;
 
     protected Sprite(Image image, Vector2D position) {
@@ -27,7 +27,9 @@ abstract public class Sprite implements Drawable { //for the moving and drawing 
 
     public void draw(Graphics g) {
         if (visible) {
-            g.drawImage(image, position.getX() - image.getWidth() / 2f, position.getY() - image.getHeight() / 2f);
+            //The position of the image is the width and height divided by 2
+            //noinspection MagicNumber
+            g.drawImage(image, position.getX() - image.getWidth() / 2.0f, position.getY() - image.getHeight() / 2.0f);
         }
     }
 
@@ -38,10 +40,5 @@ abstract public class Sprite implements Drawable { //for the moving and drawing 
     protected void setPosition(Vector2D position) {
         this.position = position;
     }
-
-    /*public void setVisible(boolean visible) {
-        this.visible = visible;
-    }*/
-    //TODO check if needed
 
 }

@@ -57,27 +57,37 @@ abstract public class Entity extends Sprite implements Updatable, CollisionVisit
         return !manager.isSpaceOccupied(this);
     }
 
+    //The methods are not abstract because they are not implemented in all entities, the entites only have
+    //collison responses for some of the other entities but not all of them.
+    //They are also only visited by some entities and not all of them.
+
+    @SuppressWarnings("NoopMethodInAbstractClass")
     @Override
     public void visit(Player player) {
     }
 
+    @SuppressWarnings("NoopMethodInAbstractClass")
     @Override
     public void visit(Projectile projectile) {
     }
 
+    @SuppressWarnings("NoopMethodInAbstractClass")
     @Override
     public void visit(Planet planet) {
     }
 
+    @SuppressWarnings("NoopMethodInAbstractClass")
     @Override
     public void collisionResponse(Projectile projectile) {
     }
 
+    @SuppressWarnings("NoopMethodInAbstractClass")
     @Override
     public void collisionResponse(Planet planet) {
     }
 
+    @SuppressWarnings("NoopMethodInAbstractClass")
     @Override
-    public void collisionResponse(Player player) {
+    public void collisionResponse(Player player){
     }
 }
