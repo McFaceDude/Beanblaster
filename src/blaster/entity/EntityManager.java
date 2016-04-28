@@ -1,8 +1,5 @@
-package blaster;
+package blaster.entity;
 
-import blaster.entity.Entity;
-import blaster.entity.Player;
-import blaster.entity.Scoreboard;
 import blaster.factory.EntityFactory;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -11,15 +8,15 @@ import org.newdawn.slick.SlickException;
 import java.util.ArrayList;
 
 /**
+ * Package: ${PACKAGE_NAME}
  * Created by Samuel on 2016-04-19.
  */
 public class EntityManager {
 
-    private ArrayList<Entity> entityList = new ArrayList<Entity>();
-    private ArrayList<EntityFactory> factoryList = new ArrayList<>();
-    private Input input;
+    private final ArrayList<Entity> entityList = new ArrayList<>();
+    private final ArrayList<EntityFactory> factoryList = new ArrayList<>();
+    private final Input input;
     private Player player;
-    private Scoreboard scoreboard;
     private int totalBeanified;
 
 
@@ -28,7 +25,7 @@ public class EntityManager {
     }
 
     public void init() throws SlickException {
-        scoreboard = new Scoreboard(this);
+        Scoreboard scoreboard = new Scoreboard(this);
         player = new Player(input, this);
         entityList.add(player);
         entityList.add(scoreboard);
@@ -67,12 +64,12 @@ public class EntityManager {
         }
     }
 
-    public void addBeanifiedPlanet() {
+    void addBeanifiedPlanet() {
         this.totalBeanified += 1;
 
     }
 
-    public int getTotalBeanified() {
+    int getTotalBeanified() {
         return totalBeanified;
     }
 
@@ -81,11 +78,11 @@ public class EntityManager {
         factoryList.add(factory);
     }
 
-    public void remove(Entity entity) {
+    void remove(Entity entity) {
         entityList.remove(entity);
     }
 
-    public boolean isSpaceOccupied(Entity asker) {
+    boolean isSpaceOccupied(Entity asker) {
         for (Entity entity : entityList) {
             if (entity.intersects(asker)) {
                 return true;

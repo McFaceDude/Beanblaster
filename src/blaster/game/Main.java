@@ -1,4 +1,4 @@
-package blaster;
+package blaster.game;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
@@ -13,13 +13,14 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Main extends StateBasedGame {
 
     static final int DISPLAY_HEIGHT = 600;
-    private static final String GAME_NAME = "Bean Blaster!";
+    private static String GAME_NAME = "Bean Blaster!";
     private static final int DISPLAY_WIDTH = 1000;
     private static final int GAME = 1;
 
     private Main(String GAME_NAME) {
         super(GAME_NAME);
-        this.addState(new Game(GAME));
+        Main.GAME_NAME = GAME_NAME;
+        this.addState(new Game());
 
     }
 

@@ -1,6 +1,5 @@
 package blaster.entity;
 
-import blaster.EntityManager;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
@@ -16,7 +15,7 @@ public class StandardPlanet extends Planet {
     private static final String[] planetTextures = {"res/Planet-2-Small.png"};
     private static final int STANDARD_PLANET_RADIUS = 35;
     private static final int ANTI_BEAN_LEVEL = 1;
-    private static String BEAN_IMAGE = "res/Planet-2-Small-Green.png";
+    private static final String BEAN_IMAGE = "res/Planet-2-Small-Green.png";
 
     public StandardPlanet(float positionY, EntityManager manager) throws SlickException {
 

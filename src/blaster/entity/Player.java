@@ -1,9 +1,8 @@
 package blaster.entity;
 
-import blaster.CollisionVisitor;
-import blaster.EntityManager;
-import blaster.Main;
-import blaster.Vector2D;
+import blaster.game.Main;
+import blaster.utility.Vector2D;
+import blaster.visitor.CollisionVisitor;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
@@ -23,7 +22,7 @@ public class Player extends Entity /*implements KeyListener */ {
     private static final Vector2D RESPAWN_POSITION = new Vector2D(STARTING_POSITION.getX(), STARTING_POSITION.getY());
     private static final float PLAYER_RADIUS = 50; //Radius of player
 
-    private static String PLAYER_TEXTURE = "res/Player-Bean-Small.png";
+    private static final String PLAYER_TEXTURE = "res/Player-Bean-Small.png";
     private Input input;
     private Vector2D speed;
 

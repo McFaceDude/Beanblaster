@@ -1,8 +1,13 @@
 package blaster.entity;
 
-import blaster.*;
+import blaster.utility.Circle;
+import blaster.utility.Sprite;
+import blaster.utility.Updatable;
+import blaster.utility.Vector2D;
+import blaster.visitor.CollisionElement;
+import blaster.visitor.CollisionVisitor;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,44 +16,44 @@ import org.newdawn.slick.SlickException;
  */
 abstract public class Entity extends Sprite implements Updatable, CollisionVisitor, CollisionElement {
 
-    protected Vector2D speed;
-    protected EntityManager manager;
-    private Circle collisionObject; //Hitbox in circle shape
-    private boolean alive;
+    final Vector2D speed;
+    final EntityManager manager;
+    private final Circle collisionObject; //Hitbox in circle shape
 
-    public Entity(Image image, Vector2D position, float radius, EntityManager manager) throws SlickException {
+
+    Entity(Image image, Vector2D position, float radius, EntityManager manager) {
         super(image, position);
         this.manager = manager;
         speed = new Vector2D(0, 0);
         collisionObject = new Circle(radius, position); //Hitbox for the spaceship
-        alive = true; //Changes when colliding with something
+
     }
 
-    protected void move(Vector2D speed) {
+    void move(Vector2D speed) {
 
         this.position.add(speed);
         collisionObject.setPosition(position);
     }
 
-    public boolean intersects(Entity other) { //checks if objects intersect
+    boolean intersects(Entity other) { //checks if objects intersect
 
         return collisionObject.intersects(other.collisionObject);
     }
 
-    public float getRadius() {
+    float getRadius() {
         return collisionObject.getRadius();
     }
 
-    public void setPosition(Vector2D position) {
+    protected void setPosition(Vector2D position) {
         super.setPosition(position);
         collisionObject.setPosition(position);
     }
 
-    protected void selfDestruct() { //removes the entity from the entityList
+    void selfDestruct() { //removes the entity from the entityList
         manager.remove(this);
     }
 
-    protected boolean canSpawn() {
+    boolean canSpawn() {
         return !manager.isSpaceOccupied(this);
     }
 

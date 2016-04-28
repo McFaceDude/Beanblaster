@@ -1,20 +1,20 @@
 package blaster.entity;
 
-import blaster.CollisionVisitor;
-import blaster.EntityManager;
-import blaster.Main;
-import blaster.Vector2D;
+import blaster.game.Main;
+import blaster.utility.Vector2D;
+import blaster.visitor.CollisionVisitor;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 /**
+ * Package: ${PACKAGE_NAME}
  * Created by Samuel on 2016-04-19.
  */
 public class Projectile extends Entity {
 
     private static final float PROJECTILE_RADIUS = 15;
     private static final float PROJECTILE_SPEED = 6.0f;
-    private static String PROJECTILE_TEXTURE = "res/Player-Bean-Very-Small.png";
+    private static final String PROJECTILE_TEXTURE = "res/Player-Bean-Very-Small.png";
     private Vector2D velocity;
 
     public Projectile(Vector2D position, Vector2D target, EntityManager manager) throws SlickException {

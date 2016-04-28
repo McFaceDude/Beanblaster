@@ -1,5 +1,6 @@
-package blaster;
+package blaster.game;
 
+import blaster.entity.EntityManager;
 import blaster.factory.EntityFactory;
 import blaster.factory.PlanetFactory;
 import blaster.factory.ProjectileFactory;
@@ -16,14 +17,13 @@ import org.newdawn.slick.state.StateBasedGame;
  * User: Samuel
  * Date: 2013-10-11
  */
-public class Game extends BasicGameState {   //The state where you play the game
+class Game extends BasicGameState {
 
-    private EntityManager entityManager;
-    private Input input;
+    private final EntityManager entityManager;
 
+    Game() {
 
-    public Game(int state) {
-        input = new Input(Main.DISPLAY_HEIGHT);
+        Input input = new Input(Main.DISPLAY_HEIGHT);
         entityManager = new EntityManager(input);
     }
 

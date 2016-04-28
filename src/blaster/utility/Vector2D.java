@@ -1,4 +1,4 @@
-package blaster;
+package blaster.utility;
 
 /**
  * Created with IntelliJ IDEA.
@@ -27,7 +27,7 @@ public class Vector2D {
         return new Vector2D(Math.abs(a.getX() - b.getX()), Math.abs(a.getY() - b.getY()));
     }
 
-    public static float distance(Vector2D a, Vector2D b) {
+    static float distance(Vector2D a, Vector2D b) {
         Vector2D diff = diff(a, b);
         return (float) Math.sqrt(Math.pow(diff.getX(), 2) + Math.pow(diff.getY(), 2));
     }
@@ -40,10 +40,10 @@ public class Vector2D {
         return new Vector2D(vector).normalize();
     }
 
-    public Vector2D add(Vector2D v) {
+    public void add(Vector2D v) {
         x += v.getX();
         y += v.getY();
-        return this;
+
     }
 
     public Vector2D sub(Vector2D v) {

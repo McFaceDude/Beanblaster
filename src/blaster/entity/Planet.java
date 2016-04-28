@@ -1,23 +1,22 @@
 package blaster.entity;
 
-import blaster.CollisionVisitor;
-import blaster.EntityManager;
-import blaster.Main;
-import blaster.Vector2D;
+import blaster.game.Main;
+import blaster.utility.Vector2D;
+import blaster.visitor.CollisionVisitor;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
 
 /**
+ * Package: ${PACKAGE_NAME}
  * Created by Samuel on 2016-04-17.
  */
 public abstract class Planet extends Entity {
 
     private static final float SPEED = 2.0f;
     private int beanHits = 0;
-    private int ANTI_BEAN_LEVEL;
-    private Image beanImage;
+    private final int ANTI_BEAN_LEVEL;
+    private final Image beanImage;
 
-    public Planet(Image image, Image beanImage, Vector2D position, float radius, EntityManager manager, int ANTI_BEAN_LEVEL) throws SlickException {
+    Planet(Image image, Image beanImage, Vector2D position, float radius, EntityManager manager, int ANTI_BEAN_LEVEL) {
         super(image, position, radius, manager);
         speed.setY(SPEED);
         this.beanImage = beanImage;
@@ -27,7 +26,7 @@ public abstract class Planet extends Entity {
         }
     }
 
-    protected static Vector2D randomPosition(float y, float radius) {
+    static Vector2D randomPosition(float y, float radius) {
         return new Vector2D(((float) Math.random() * (Main.getDisplayWidth() - radius * 2) + radius), y);
     }
 
@@ -47,7 +46,7 @@ public abstract class Planet extends Entity {
         setPosition(randomPosition(position.getY(), getRadius()));
     }
 
-    private void changeImage() throws SlickException {
+    private void changeImage() {
         loadImage(beanImage);
     }
 
@@ -80,11 +79,10 @@ public abstract class Planet extends Entity {
         beanHits += 1;
         if (beanHits > ANTI_BEAN_LEVEL && beanHits < ANTI_BEAN_LEVEL + 2) {
             manager.addBeanifiedPlanet();
-            try {
-                changeImage();
-            } catch (SlickException e) {
-                e.printStackTrace();
-            }
+
+            changeImage();
+
+
         }
     }
 }

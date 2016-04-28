@@ -1,13 +1,14 @@
 package blaster.factory;
 
-import blaster.EntityManager;
-import blaster.Vector2D;
 import blaster.entity.Entity;
+import blaster.entity.EntityManager;
 import blaster.entity.Projectile;
+import blaster.utility.Vector2D;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
 /**
+ * Package: ${PACKAGE_NAME}
  * Created by Samuel on 2016-04-24.
  */
 public class ProjectileFactory implements EntityFactory {

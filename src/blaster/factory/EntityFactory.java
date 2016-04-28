@@ -1,12 +1,13 @@
 package blaster.factory;
 
-import blaster.EntityManager;
-import blaster.Updatable;
 import blaster.entity.Entity;
+import blaster.entity.EntityManager;
+import blaster.utility.Updatable;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
 /**
+ * Project: Beanblaster.
  * Created by Samuel on 2016-04-21.
  */
 public interface EntityFactory extends Updatable {

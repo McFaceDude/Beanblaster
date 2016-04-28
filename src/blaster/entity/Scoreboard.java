@@ -1,23 +1,23 @@
 package blaster.entity;
 
-import blaster.CollisionVisitor;
-import blaster.EntityManager;
-import blaster.Vector2D;
+import blaster.utility.Vector2D;
+import blaster.visitor.CollisionVisitor;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 /**
+ * Package: ${PACKAGE_NAME}
  * Created by Samuel on 2016-04-26.
  */
-public class Scoreboard extends Entity {
+class Scoreboard extends Entity {
 
     private static final Vector2D POSITION = new Vector2D(2000, 20);
     private static final float RADIUS = 0;
-    private static String IMAGE = "res/Player-Bean-Small.png";
+    private static final String IMAGE = "res/Player-Bean-Small.png";
 
 
-    public Scoreboard(EntityManager manager) throws SlickException {
+    Scoreboard(EntityManager manager) throws SlickException {
         super(new Image(IMAGE), POSITION, RADIUS, manager);
     }
 

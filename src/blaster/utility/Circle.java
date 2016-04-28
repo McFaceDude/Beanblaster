@@ -1,12 +1,13 @@
-package blaster;
+package blaster.utility;
 
 
 /**
+ * Package: ${PACKAGE_NAME}
  * Created by Samuel on 2015-07-21.
  */
 public class Circle {
 
-    private float radius;
+    private final float radius;
     private Vector2D position;
 
     public Circle(float radius, Vector2D position) {
@@ -19,14 +20,15 @@ public class Circle {
         return radius;
     }
 
-    public void setRadius(float radius) {
+   /* public void setRadius(float radius) {
         this.radius = radius;
     }
 
     public Vector2D getPosition() {
         return position;
     }
-
+    */
+    //TODO check if needed
     public void setPosition(Vector2D position) {
         this.position = position;
     }

@@ -1,8 +1,8 @@
-package blaster;
+package blaster.utility;
 
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,15 +13,15 @@ abstract public class Sprite implements Drawable { //for the moving and drawing 
 
     protected Vector2D position;
     private Image image;
-    private boolean visible;
+    private final boolean visible;
 
-    public Sprite(Image image, Vector2D position) throws SlickException {
+    protected Sprite(Image image, Vector2D position) {
         loadImage(image);
         this.position = position;
         visible = true;
     }
 
-    protected void loadImage(Image image) throws SlickException {
+    protected void loadImage(Image image) {
         this.image = image;
     }
 
@@ -31,17 +31,17 @@ abstract public class Sprite implements Drawable { //for the moving and drawing 
         }
     }
 
-    public Vector2D getPosition() {
+    protected Vector2D getPosition() {
         return position;
     }
 
-    public void setPosition(Vector2D position) {
+    protected void setPosition(Vector2D position) {
         this.position = position;
     }
 
-    public void setVisible(boolean visible) {
+    /*public void setVisible(boolean visible) {
         this.visible = visible;
-    }
-
+    }*/
+    //TODO check if needed
 
 }
