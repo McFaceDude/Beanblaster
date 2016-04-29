@@ -7,8 +7,11 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 /**
- * Package: ${PACKAGE_NAME}
  * Created by Samuel on 2016-04-26.
+ * Scroeboard is the text at the top of the screen which desplays how many planets that have been beanified.
+ * It is a entity beacuse it needs to acces the draw method which all entities have. Beacuse it only draws
+ * text on the screen, it dows not need a image but beacuse it is a entity it must have a image.
+ * The image is drawn outside the screen and is never used.
  */
 class Scoreboard extends Entity {
 
@@ -28,7 +31,7 @@ class Scoreboard extends Entity {
 
     @Override
     public void draw(Graphics g) {
-        g.drawString("Planets Beanified: " + manager.getTotalBeanified(), X_POSITION, Y_POSITION);
+        g.drawString("Planets Beanified: " + getManager().getTotalBeanified(), X_POSITION, Y_POSITION);
     }
 
     @Override

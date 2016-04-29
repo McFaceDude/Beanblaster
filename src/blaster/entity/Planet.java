@@ -6,8 +6,13 @@ import blaster.visitor.CollisionVisitor;
 import org.newdawn.slick.Image;
 
 /**
- * Package: ${PACKAGE_NAME}
  * Created by Samuel on 2016-04-17.
+ * Planet is a Entity and different planet types exends this class.
+ * This calss has all the fetures that the plnet types have in common like speed.
+ * It implements a collisionResponse for projectile beacuse that is the only entity that it has
+ * a response to, when colliding with it.
+ * If it passed the screen it calls the selfDestruct method in EntityManager which removes it from the
+ * entityList.
  */
 public abstract class Planet extends Entity {
 
@@ -18,7 +23,7 @@ public abstract class Planet extends Entity {
 
     Planet(Image image, Image beanImage, Vector2D position, float radius, EntityManager manager, int antiBeanLevel) {
         super(image, position, radius, manager);
-        speed.setY(SPEED);
+        getSpeed().setY(SPEED);
         this.beanImage = beanImage;
         this.antiBeanLevel = antiBeanLevel;
         while (!canSpawn()) {
@@ -31,7 +36,7 @@ public abstract class Planet extends Entity {
     }
 
     public void update(float deltaTime) {
-        move(speed);
+        move(getSpeed());
         if (passedScreen()) {
             selfDestruct();
         }
@@ -77,7 +82,7 @@ public abstract class Planet extends Entity {
         super.collisionResponse(projectile);
         beanHits += 1;
         if (beanHits > antiBeanLevel && beanHits < antiBeanLevel + 2) {
-            manager.addBeanifiedPlanet();
+            getManager().addBeanifiedPlanet();
 
             changeImage();
 

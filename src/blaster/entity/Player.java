@@ -8,11 +8,12 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Samuel
- * Date: 2013-10-06
+ * Created by Samuel on 2013-10-06.
+ * Player is an Entity.
+ * Player moves withe the arrow buttons and its movment is constrained to the size of the screen.
+ * It has a collisonResponse for colliding with planet, it then "dies" and respawns at the respawn position.
  */
-public class Player extends Entity /*implements KeyListener */ {
+public class Player extends Entity {
 
     private static final float MAX_SPEED = 4.0f;
     private static final float ACCELERATION = 2.0f;

@@ -6,9 +6,10 @@ import org.newdawn.slick.SlickException;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Samuel
- * Date: 2013-10-15
+ * Created by Samuel on 2013-10-15
+ * StandardPlanet is a Planet and is created by the PlanetGenerator class.
+ * It has a standard image and a image for when it has bean "beanified" which means that a projectile
+ * has collided with it more times than its ANTI_BEAN_LEVEL.
  */
 public class StandardPlanet extends Planet {
 

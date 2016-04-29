@@ -7,8 +7,10 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 /**
- * Package: ${PACKAGE_NAME}
  * Created by Samuel on 2016-04-19.
+ * Projectile is an Entity.
+ * It is created by the ProjectileFactory. It self destructs when colliding with a planet or when passing
+ * the edge of the screen.
  */
 public class Projectile extends Entity {
 

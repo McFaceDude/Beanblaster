@@ -10,8 +10,12 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Package: ${PACKAGE_NAME}
  * Created by Samuel on 2016-04-19.
+ * EntityManager is created by the Game class and it manages all the entities in the game.
+ * It has a factotyList with all the factories that produces entities and this class adds them to the entityList.
+ * EntityManager checks if the entityFactories want to produce any entities and it then updates and draws
+ * the produced entities and the collides them with each other. It is then up to the entities to have a
+ * collisionresponse depending on what entities it collides with.
  */
 public class EntityManager {
 
@@ -47,7 +51,6 @@ public class EntityManager {
         // the entityList when the for loop is running, we need to iterate through a copy of that list
 
         for (Entity entity : tempList) {
-
             entity.update(deltaTime);
         }
 

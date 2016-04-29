@@ -8,8 +8,9 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
 /**
- * Package: ${PACKAGE_NAME}
  * Created by Samuel on 2016-04-24.
+ * The ProjectileFactory porduces a projectile when the mouse botton has been clicked.
+ * It impelemnts EntityFactory beacuse it is a factory.
  */
 public class ProjectileFactory implements EntityFactory {
 
@@ -23,9 +24,6 @@ public class ProjectileFactory implements EntityFactory {
     @Override
     public boolean wantsToProduce(float deltaTime, Input input) {
         this.input = input;
-
-        //System.out.println("player position: " +  +"mouseX: "+ input.getMouseX() + "mouseY: "+ input.getMouseY());
-        //mousePressed(input);
 
         boolean isDown = input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON);
         boolean isPressed = isDown && !wasDown;

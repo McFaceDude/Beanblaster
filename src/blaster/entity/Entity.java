@@ -10,14 +10,20 @@ import org.newdawn.slick.Image;
 
 
 /**
- * Created with IntelliJ IDEA.
- * User: Samuel
- * Date: 2013-10-06
+ * Created by Samuel 2013-10-06
+ * Entity extends sprite because all the entities can be drawn on the screen.
+ * All the entities have a Circle which is the hitbox for the entity. It is used for collison.
+ * It implements Updatable beacuse it has to have a update method. It impelemnts CollisonVisitor and
+ * CollisionElement as part of the visitor design pattern. All the visit and collsionResponse methods
+ * are implemented as empty here in Entity and if for example, the Entity Planet can be visited be a
+ * pejectile, then planet will implement the visit method for projectile and override the empty method here.
+ * Entities takes the EnityManager as a parameter so that all the entities knows who manages them.
+ * Entity can use this to selfDestruct which removes the entity from the entityList in the manager.
  */
 abstract public class Entity extends Sprite implements Updatable, CollisionVisitor, CollisionElement {
 
-    final Vector2D speed;
-    final EntityManager manager;
+    private final Vector2D speed;
+    private final EntityManager manager;
     private final Circle collisionObject; //Hitbox in circle shape
 
 
@@ -26,7 +32,6 @@ abstract public class Entity extends Sprite implements Updatable, CollisionVisit
         this.manager = manager;
         speed = new Vector2D(0, 0);
         collisionObject = new Circle(radius, position); //Hitbox for the spaceship
-
     }
 
     void move(Vector2D speed) {
@@ -50,11 +55,19 @@ abstract public class Entity extends Sprite implements Updatable, CollisionVisit
     }
 
     void selfDestruct() { //removes the entity from the entityList
-        manager.remove(this);
+        getManager().remove(this);
     }
 
     boolean canSpawn() {
-        return !manager.isSpaceOccupied(this);
+        return !getManager().isSpaceOccupied(this);
+    }
+
+    public Vector2D getSpeed() {
+        return speed;
+    }
+
+    public EntityManager getManager() {
+        return manager;
     }
 
     //The methods are not abstract because they are not implemented in all entities, the entites only have
@@ -90,4 +103,6 @@ abstract public class Entity extends Sprite implements Updatable, CollisionVisit
     @Override
     public void collisionResponse(Player player){
     }
+
+
 }
