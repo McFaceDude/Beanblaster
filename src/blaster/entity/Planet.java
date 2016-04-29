@@ -8,7 +8,7 @@ import org.newdawn.slick.Image;
 /**
  * Created by Samuel on 2016-04-17.
  * Planet is a Entity and different planet types exends this class.
- * This calss has all the fetures that the plnet types have in common like speed.
+ * This class has all the features that the planet types have in common, like speed.
  * It implements a collisionResponse for projectile beacuse that is the only entity that it has
  * a response to, when colliding with it.
  * If it passed the screen it calls the selfDestruct method in EntityManager which removes it from the
@@ -55,10 +55,14 @@ public abstract class Planet extends Entity {
     }
 
     @Override
-    public void collide(CollisionVisitor collisionVisitor) {
+    public void collide(CollisionVisitor collisionVisitor) { //This method calls the visit method of
+        // the entity that it collided with (sending this as a parameter) so that that entity know that it collided
+        // with this entity.
         collisionVisitor.visit(this);
     }
 
+    //A Planet can be visited (can collide) with a projectile and a player but it only has a response
+    //when colliding with a projectile, therefor, two visit methods but only one response method.
     @Override
     public void visit(Projectile projectile) {
         super.visit(projectile);

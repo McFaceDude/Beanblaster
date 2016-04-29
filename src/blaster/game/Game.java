@@ -14,10 +14,10 @@ import org.newdawn.slick.state.StateBasedGame;
 
 /**
  * Created by Samuel on 2013-10-11
- * The Game class created the entityManager obeject which manages all the entities on the screen.
- * It adds the factories which produces the entities. If you wanted to add a new factory which produces
- * for example power upps in the game you would create that factory and then Game would add it to enityManager.
- * Game also calls the update method in EntityManager which upates all the entities so that
+ * The Game class creates the EntityManager obeject which manages all the entities on the screen.
+ * It adds the factories which produces the entities. If you wanted to add a new factory which produces,
+ * for example powerups in the game, you would create that factory and then Game would add it to EnityManager.
+ * Game calls the update method in EntityManager which upates all the entities so that
  * they can move and spawn and so on.
  */
 class Game extends BasicGameState {

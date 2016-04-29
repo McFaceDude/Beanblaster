@@ -21,7 +21,6 @@ class Scoreboard extends Entity {
     private static final int X_POSITION = 350;
     private static final int Y_POSITION = 20;
 
-
     Scoreboard(EntityManager manager) throws SlickException {
         super(new Image(IMAGE), POSITION, RADIUS, manager);
     }
@@ -34,6 +33,7 @@ class Scoreboard extends Entity {
         g.drawString("Planets Beanified: " + getManager().getTotalBeanified(), X_POSITION, Y_POSITION);
     }
 
+    //See Planet class for explanation of this method
     @Override
     public void collide(CollisionVisitor collisionVisitor) {
     }

@@ -19,7 +19,7 @@ public class Player extends Entity {
     private static final float ACCELERATION = 2.0f;
     private static final float FRICTION = 0.7f; //always <1
 
-    private static final Vector2D STARTING_POSITION = new Vector2D(500, 400); //where the player spaceship will start
+    private static final Vector2D STARTING_POSITION = new Vector2D(500, 400);
     private static final Vector2D RESPAWN_POSITION = new Vector2D(STARTING_POSITION.getX(), STARTING_POSITION.getY());
     private static final float PLAYER_RADIUS = 50; //Radius of player
 
@@ -34,7 +34,7 @@ public class Player extends Entity {
     }
 
     @Override
-    public void update(float deltaTime) {
+    public void update(float deltaTime) { //sets the speed of the player depening on the mouse buttons.
         Vector2D direction = Vector2D.zero();
 
         if (input.isKeyDown(Input.KEY_UP)) {
@@ -88,6 +88,7 @@ public class Player extends Entity {
         setPosition(temp);
     }
 
+    //See Planet class for explanation of these methods
     @Override
     public void collide(CollisionVisitor collisionVisitor) {
         collisionVisitor.visit(this);

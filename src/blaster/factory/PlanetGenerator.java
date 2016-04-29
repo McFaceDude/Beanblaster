@@ -20,7 +20,6 @@ final class PlanetGenerator {
     private PlanetGenerator() {
     }
 
-    //TODO check this
     private static Planet buildSuperPlanet(float positionY, EntityManager manager) throws SlickException {
         return new SuperPlanet(positionY, manager);
     }

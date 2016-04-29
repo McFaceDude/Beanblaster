@@ -17,7 +17,6 @@ public class Circle {
     }
 
     public float getRadius() {
-
         return radius;
     }
 

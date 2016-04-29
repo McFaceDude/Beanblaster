@@ -9,7 +9,7 @@ import org.newdawn.slick.SlickException;
 
 /**
  * Created by Samuel on 2016-04-24.
- * The ProjectileFactory porduces a projectile when the mouse botton has been clicked.
+ * The ProjectileFactory produces a projectile when the mouse button has been clicked.
  * It impelemnts EntityFactory beacuse it is a factory.
  */
 public class ProjectileFactory implements EntityFactory {

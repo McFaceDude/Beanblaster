@@ -45,6 +45,7 @@ public class Projectile extends Entity {
         return false;
     }
 
+    //See Planet class for explanation of these methods
     @Override
     public void collide(CollisionVisitor collisionVisitor) {
         collisionVisitor.visit(this);

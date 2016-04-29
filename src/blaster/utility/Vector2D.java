@@ -92,7 +92,7 @@ public class Vector2D {
         if (obj instanceof Vector2D) {
             Vector2D other = (Vector2D) obj;
 
-            return this.x == other.x && this.y == other.y;
+            return Double.compare(this.x,other.x) == 0 && Double.compare(this.y,other.y) == 0;
         }
         return false;
     }

@@ -10,6 +10,9 @@ import org.newdawn.slick.state.StateBasedGame;
  * The main class for the project. Uses the slick library and extends StateBasedGame in slick.
  * Main calls the game class which "starts up" the game.
  * The Main class sets the size of the window in which the game is played.
+ *
+ * The libraries used in this project are slick which uses the lwjgl library.
+ * They are both open source.
  */
 public final class Main extends StateBasedGame {
 
@@ -21,7 +24,6 @@ public final class Main extends StateBasedGame {
     private Main(String gameName) {
         super(gameName);
         this.addState(new Game());
-
     }
 
     public static void main(String[] args) {

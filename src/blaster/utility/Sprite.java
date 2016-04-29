@@ -6,10 +6,10 @@ import org.newdawn.slick.Image;
 
 /**
  * Created by Samuel on 2013-10-05
- * The class draws all the images in the game and moves the obejct.
+ * The class draws all the images in the game and moves the obejcts.
  * All the entities inherits from Sprite.
  */
-public class Sprite { //for the moving and drawing of objects on the screen
+public class Sprite {
 
     protected Vector2D position;
     private Image image = null;

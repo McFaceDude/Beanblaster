@@ -15,7 +15,7 @@ import org.newdawn.slick.Image;
  * All the entities have a Circle which is the hitbox for the entity. It is used for collison.
  * It implements Updatable beacuse it has to have a update method. It impelemnts CollisonVisitor and
  * CollisionElement as part of the visitor design pattern. All the visit and collsionResponse methods
- * are implemented as empty here in Entity and if for example, the Entity Planet can be visited be a
+ * are implemented as empty here in Entity and if for example, the Entity Planet can be visited by a
  * pejectile, then planet will implement the visit method for projectile and override the empty method here.
  * Entities takes the EnityManager as a parameter so that all the entities knows who manages them.
  * Entity can use this to selfDestruct which removes the entity from the entityList in the manager.
@@ -31,7 +31,7 @@ abstract public class Entity extends Sprite implements Updatable, CollisionVisit
         super(image, position);
         this.manager = manager;
         speed = new Vector2D(0, 0);
-        collisionObject = new Circle(radius, position); //Hitbox for the spaceship
+        collisionObject = new Circle(radius, position);
     }
 
     void move(Vector2D speed) {
@@ -55,11 +55,11 @@ abstract public class Entity extends Sprite implements Updatable, CollisionVisit
     }
 
     void selfDestruct() { //removes the entity from the entityList
-        getManager().remove(this);
+        manager.remove(this);
     }
 
     boolean canSpawn() {
-        return !getManager().isSpaceOccupied(this);
+        return !manager.isSpaceOccupied(this);
     }
 
     public Vector2D getSpeed() {
