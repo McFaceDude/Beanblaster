@@ -1,18 +1,20 @@
 package blaster.factory;
 
-import blaster.EntityManager;
-import blaster.Updatable;
 import blaster.entity.Entity;
+import blaster.entity.EntityManager;
+import blaster.utility.Updatable;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
 /**
  * Created by Samuel on 2016-04-21.
+ * All the Factories implements EntityFactory.
+ * The factories be asked if they want to produce any entities and if so they are asked to produce.
  */
-public abstract interface EntityFactory extends Updatable {
+public interface EntityFactory extends Updatable {
 
-    public abstract boolean wantsToProduce(float deltaTime, Input input);
+    boolean wantsToProduce(float deltaTime, Input input);
 
-    public abstract Entity produce(EntityManager manager) throws SlickException;
+    Entity produce(EntityManager manager) throws SlickException;
 
 }

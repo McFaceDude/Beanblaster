@@ -1,5 +1,6 @@
-package blaster;
+package blaster.game;
 
+import blaster.entity.EntityManager;
 import blaster.factory.EntityFactory;
 import blaster.factory.PlanetFactory;
 import blaster.factory.ProjectileFactory;
@@ -12,19 +13,20 @@ import org.newdawn.slick.state.StateBasedGame;
 
 
 /**
- * Created with IntelliJ IDEA.
- * User: Samuel
- * Date: 2013-10-11
+ * Created by Samuel on 2013-10-11
+ * The Game class creates the EntityManager obeject which manages all the entities on the screen.
+ * It adds the factories which produces the entities. If you wanted to add a new factory which produces,
+ * for example powerups in the game, you would create that factory and then Game would add it to EnityManager.
+ * Game calls the update method in EntityManager which upates all the entities so that
+ * they can move and spawn and so on.
  */
-public class Game extends BasicGameState {   //The state where you play the game
+class Game extends BasicGameState {
 
-    EntityManager entityManager;
-    public Input input;
+    private final EntityManager entityManager;
 
+    Game() {
 
-
-    public Game (int state) {
-        input = new Input(Main.DISPLAY_HEIGHT);
+        Input input = new Input(Main.DISPLAY_HEIGHT);
         entityManager = new EntityManager(input);
     }
 
@@ -41,18 +43,16 @@ public class Game extends BasicGameState {   //The state where you play the game
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) {
         entityManager.draw(g);
-
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int milliseconds) throws SlickException {
-        float deltaTime = 1f/milliseconds; //converts to seconds from milliseconds
+        float deltaTime = 1.0f / milliseconds; //converts to seconds from milliseconds
         entityManager.update(deltaTime);
     }
 
     public int getID() {
         return 1;
     }
-
 
 
 }

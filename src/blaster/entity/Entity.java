@@ -1,84 +1,108 @@
 package blaster.entity;
 
-import blaster.*;
+import blaster.utility.Circle;
+import blaster.utility.Sprite;
+import blaster.utility.Updatable;
+import blaster.utility.Vector2D;
+import blaster.visitor.CollisionElement;
+import blaster.visitor.CollisionVisitor;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
+
 
 /**
- * Created with IntelliJ IDEA.
- * User: Samuel
- * Date: 2013-10-06
+ * Created by Samuel 2013-10-06
+ * Entity extends sprite because all the entities can be drawn on the screen.
+ * All the entities have a Circle which is the hitbox for the entity. It is used for collison.
+ * It implements Updatable beacuse it has to have a update method. It impelemnts CollisonVisitor and
+ * CollisionElement as part of the visitor design pattern. All the visit and collsionResponse methods
+ * are implemented as empty here in Entity and if for example, the Entity Planet can be visited by a
+ * pejectile, then planet will implement the visit method for projectile and override the empty method here.
+ * Entities takes the EnityManager as a parameter so that all the entities knows who manages them.
+ * Entity can use this to selfDestruct which removes the entity from the entityList in the manager.
  */
-abstract public class Entity extends Sprite implements Updatable, CollisionVisitor, CollisonElement {
+abstract public class Entity extends Sprite implements Updatable, CollisionVisitor, CollisionElement {
 
-    protected Vector2D speed;
-    private Circle collisionObject; //Hitbox in circle shape
-    protected boolean alive;
-    protected EntityManager manager;
+    private final Vector2D speed;
+    private final EntityManager manager;
+    private final Circle collisionObject; //Hitbox in circle shape
 
-    public Entity(Image image, Vector2D position, float radius, EntityManager manager) throws SlickException {
+
+    Entity(Image image, Vector2D position, float radius, EntityManager manager) {
         super(image, position);
         this.manager = manager;
-        speed = new Vector2D(0,0);
-        collisionObject = new Circle(radius, position); //Hitbox for the spaceship
-        alive = true; //Changes when colliding with something
+        speed = new Vector2D(0, 0);
+        collisionObject = new Circle(radius, position);
     }
 
-    protected void move(Vector2D speed){
+    void move(Vector2D speed) {
 
         this.position.add(speed);
         collisionObject.setPosition(position);
-
     }
 
-    public boolean intersects(Entity other){ //checks if objects intersect
+    boolean intersects(Entity other) { //checks if objects intersect
 
-        if (collisionObject.intersects(other.collisionObject)){
-            return true;
-        }
-        return false;
+        return collisionObject.intersects(other.collisionObject);
     }
 
-    public float getRadius(){
+    float getRadius() {
         return collisionObject.getRadius();
     }
 
-    public void setPosition(Vector2D position) {
+    protected void setPosition(Vector2D position) {
         super.setPosition(position);
         collisionObject.setPosition(position);
     }
 
-    protected void selfDestruct(){ //removes the entity from the entityList
+    void selfDestruct() { //removes the entity from the entityList
         manager.remove(this);
     }
 
-    protected boolean canSpawn(){
+    boolean canSpawn() {
         return !manager.isSpaceOccupied(this);
     }
 
+    public Vector2D getSpeed() {
+        return speed;
+    }
 
+    public EntityManager getManager() {
+        return manager;
+    }
 
+    //The methods are not abstract because they are not implemented in all entities, the entites only have
+    //collison responses for some of the other entities but not all of them.
+    //They are also only visited by some entities and not all of them.
+
+    @SuppressWarnings("NoopMethodInAbstractClass")
     @Override
     public void visit(Player player) {
     }
 
+    @SuppressWarnings("NoopMethodInAbstractClass")
     @Override
     public void visit(Projectile projectile) {
     }
 
+    @SuppressWarnings("NoopMethodInAbstractClass")
     @Override
     public void visit(Planet planet) {
     }
 
+    @SuppressWarnings("NoopMethodInAbstractClass")
     @Override
     public void collisionResponse(Projectile projectile) {
     }
 
+    @SuppressWarnings("NoopMethodInAbstractClass")
     @Override
     public void collisionResponse(Planet planet) {
     }
 
+    @SuppressWarnings("NoopMethodInAbstractClass")
     @Override
-    public void collisionResponse(Player player) {
+    public void collisionResponse(Player player){
     }
+
+
 }

@@ -1,71 +1,72 @@
 package blaster.entity;
 
-import blaster.CollisionVisitor;
-import blaster.EntityManager;
-import blaster.Main;
-import blaster.Vector2D;
+import blaster.game.Main;
+import blaster.utility.Vector2D;
+import blaster.visitor.CollisionVisitor;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
 
 /**
  * Created by Samuel on 2016-04-17.
+ * Planet is a Entity and different planet types exends this class.
+ * This class has all the features that the planet types have in common, like speed.
+ * It implements a collisionResponse for projectile beacuse that is the only entity that it has
+ * a response to, when colliding with it.
+ * If it passed the screen it calls the selfDestruct method in EntityManager which removes it from the
+ * entityList.
  */
 public abstract class Planet extends Entity {
 
-    private boolean planetBeanified = false;
     private static final float SPEED = 2.0f;
     private int beanHits = 0;
-    private int ANTI_BEAN_LEVEL;
-    private Image beanImage;
+    private final int antiBeanLevel;
+    private final Image beanImage;
 
-    public Planet(Image image, Image beanImage, Vector2D position, float radius, EntityManager manager, int ANTI_BEAN_LEVEL) throws SlickException {
+    Planet(Image image, Image beanImage, Vector2D position, float radius, EntityManager manager, int antiBeanLevel) {
         super(image, position, radius, manager);
-        speed.setY(SPEED);
+        getSpeed().setY(SPEED);
         this.beanImage = beanImage;
-        this.ANTI_BEAN_LEVEL = ANTI_BEAN_LEVEL;
+        this.antiBeanLevel = antiBeanLevel;
         while (!canSpawn()) {
             randomisePositionX();
         }
     }
 
+    static Vector2D randomPosition(float y, float radius) {
+        return new Vector2D(((float) Math.random() * (Main.getDisplayWidth() - radius * 2) + radius), y);
+    }
+
     public void update(float deltaTime) {
-        super.move(speed);
-        if (passedScreen()){
-           selfDestruct();
+        move(getSpeed());
+        if (passedScreen()) {
+            selfDestruct();
         }
-
     }
 
-    public boolean passedScreen(){
-        if (position.getY() >= Main.getDisplayHeight() + getRadius()){
-
-            return true;
-        }
-        return false;
+    private boolean passedScreen() {
+        return position.getY() >= Main.getDisplayHeight() + getRadius();
     }
 
-    public void randomisePositionX(){
+    private void randomisePositionX() {
         setPosition(randomPosition(position.getY(), getRadius()));
     }
 
-    protected static Vector2D randomPosition( float y, float radius){
-        return new Vector2D(((float)Math.random()*(Main.getDisplayWidth() - radius*2) + radius), y);
-    }
-
-
-    private void changeImage() throws SlickException {
+    private void changeImage() {
         loadImage(beanImage);
     }
 
     @Override
-    public void collide(CollisionVisitor collisionVisitor) {
+    public void collide(CollisionVisitor collisionVisitor) { //This method calls the visit method of
+        // the entity that it collided with (sending this as a parameter) so that that entity know that it collided
+        // with this entity.
         collisionVisitor.visit(this);
     }
 
+    //A Planet can be visited (can collide) with a projectile and a player but it only has a response
+    //when colliding with a projectile, therefor, two visit methods but only one response method.
     @Override
     public void visit(Projectile projectile) {
         super.visit(projectile);
-        if(intersects(projectile)){
+        if (intersects(projectile)) {
             collisionResponse(projectile);
             projectile.collisionResponse(this);
         }
@@ -74,7 +75,7 @@ public abstract class Planet extends Entity {
     @Override
     public void visit(Player player) {
         super.visit(player);
-        if(intersects(player)){
+        if (intersects(player)) {
             collisionResponse(player);
             player.collisionResponse(this);
         }
@@ -84,13 +85,12 @@ public abstract class Planet extends Entity {
     public void collisionResponse(Projectile projectile) {
         super.collisionResponse(projectile);
         beanHits += 1;
-        if (beanHits > ANTI_BEAN_LEVEL && beanHits<ANTI_BEAN_LEVEL +2){
-            manager.addBeanifiedPlanet();
-            try {
-                changeImage();
-            } catch (SlickException e) {
-                e.printStackTrace();
-            }
+        if (beanHits > antiBeanLevel && beanHits < antiBeanLevel + 2) {
+            getManager().addBeanifiedPlanet();
+
+            changeImage();
+
+
         }
     }
 }

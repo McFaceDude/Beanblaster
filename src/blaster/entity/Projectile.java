@@ -1,20 +1,22 @@
 package blaster.entity;
 
-import blaster.CollisionVisitor;
-import blaster.EntityManager;
-import blaster.Main;
-import blaster.Vector2D;
+import blaster.game.Main;
+import blaster.utility.Vector2D;
+import blaster.visitor.CollisionVisitor;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 /**
  * Created by Samuel on 2016-04-19.
+ * Projectile is an Entity.
+ * It is created by the ProjectileFactory. It self destructs when colliding with a planet or when passing
+ * the edge of the screen.
  */
 public class Projectile extends Entity {
 
     private static final float PROJECTILE_RADIUS = 15;
     private static final float PROJECTILE_SPEED = 6.0f;
-    private static String PROJECTILE_TEXTURE = "res/Player-Bean-Very-Small.png";
+    private static final String PROJECTILE_TEXTURE = "res/Player-Bean-Very-Small.png";
     private Vector2D velocity;
 
     public Projectile(Vector2D position, Vector2D target, EntityManager manager) throws SlickException {
@@ -22,37 +24,28 @@ public class Projectile extends Entity {
         super(new Image(PROJECTILE_TEXTURE), position, PROJECTILE_RADIUS, manager);
         Vector2D direction = new Vector2D(target).sub(position).normalize();
         this.velocity = new Vector2D(direction.getX() * PROJECTILE_SPEED, direction.getY() * PROJECTILE_SPEED);
-
-
     }
 
     public void update(float deltaTime) {
-        super.move(velocity);
-        if (passedScreen()){
+        move(velocity);
+        if (passedScreen()) {
             selfDestruct();
         }
     }
 
-    private boolean passedScreen(){
+    private boolean passedScreen() {
         this.position = getPosition();
 
-        if (position.getY() + PROJECTILE_RADIUS <= 0) {
+        if (position.getY() + PROJECTILE_RADIUS <= 0 || position.getY() - PROJECTILE_RADIUS >= Main.getDisplayHeight()) {
             return true;
         }
-        else if(position.getY() - PROJECTILE_RADIUS >= Main.getDisplayHeight()){
-            return true;
-        }
-        if (position.getX() + PROJECTILE_RADIUS <= 0){
-            return true;
-        }
-        else if (position.getX() - PROJECTILE_RADIUS >= Main.getDisplayWidth()) {
+        if (position.getX() + PROJECTILE_RADIUS <= 0 || position.getX() - PROJECTILE_RADIUS >= Main.getDisplayWidth()) {
             return true;
         }
         return false;
     }
 
-
-
+    //See Planet class for explanation of these methods
     @Override
     public void collide(CollisionVisitor collisionVisitor) {
         collisionVisitor.visit(this);
@@ -61,7 +54,7 @@ public class Projectile extends Entity {
     @Override
     public void visit(Planet planet) {
         super.visit(planet);
-        if(intersects(planet)){
+        if (intersects(planet)) {
             collisionResponse(planet);
             planet.collisionResponse(this);
         }
