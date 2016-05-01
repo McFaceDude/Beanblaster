@@ -16,7 +16,6 @@ import blaster.entity.Projectile;
 
 //The methods are implemented in Entity and these methods are not used but they exist so that Entity knows which
 //collisonResponse methods to implement.
-@SuppressWarnings("unused")
 public interface CollisionElement {
 
     void collide(CollisionVisitor collisionVisitor);
@@ -26,7 +25,6 @@ public interface CollisionElement {
     void collisionResponse(Projectile projectile);
 
     //The method is never implemented but called when someone collides with a player.
-    @SuppressWarnings("EmptyMethod")
     void collisionResponse(Player player);
 
 }

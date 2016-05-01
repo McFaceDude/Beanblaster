@@ -46,6 +46,7 @@ class Game extends BasicGameState {
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int milliseconds) throws SlickException {
+        System.out.println(milliseconds);
         float deltaTime = 1.0f / milliseconds; //converts to seconds from milliseconds
         entityManager.update(deltaTime);
     }

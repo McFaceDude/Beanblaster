@@ -28,7 +28,6 @@ public class Sprite {
     public void draw(Graphics g) {
         if (visible) {
             //The position of the image is the width and height divided by 2
-            //noinspection MagicNumber
             g.drawImage(image, position.getX() - image.getWidth() / 2.0f, position.getY() - image.getHeight() / 2.0f);
         }
     }
